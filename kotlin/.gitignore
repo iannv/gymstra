@@ -13,9 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-.idea/
-**/*.iml
-gradlew
-gradlew.bat
-*.apk
