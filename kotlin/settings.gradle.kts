@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "gymstra"
 include(":app")
- 
