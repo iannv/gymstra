@@ -85,42 +85,57 @@
             android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="15dp"
             android:text="Nombre"
             android:textColor="@color/gris"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/etNombreA"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/input_fill"
             android:ems="10"
+            android:hint="_"
             android:inputType="text|textPersonName"
-            android:textColor="@color/celeste" />
+            android:paddingStart="15dp"
+            android:textColor="@color/celeste"
+            android:textColorHint="@color/azulClaro"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="15dp"
             android:text="Apellido"
             android:textColor="@color/gris"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/etApellidoA"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/input_fill"
             android:ems="10"
+            android:hint="_"
             android:inputType="text|textPersonName"
-            android:textColor="@color/celeste" />
+            android:paddingStart="15dp"
+            android:textColor="@color/celeste"
+            android:textColorHint="@color/azulClaro"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|right"
             android:layout_weight="0"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="15dp">
 
             <TextView
                 android:id="@+id/tvDni"
@@ -149,29 +164,44 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextText4"
+                android:id="@+id/etDniA"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/input_fill"
                 android:ems="10"
-                android:inputType="number" />
+                android:hint="_"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:textColor="@color/celeste"
+                android:textColorHint="@color/azulClaro"
+                android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/editTextText5"
+                android:id="@+id/etTelA"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/input_fill"
                 android:ems="10"
-                android:inputType="phone" />
+                android:hint="_"
+                android:inputType="phone"
+                android:paddingStart="15dp"
+                android:textColor="@color/celeste"
+                android:textColorHint="@color/azulClaro"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvVecesXsemana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="15dp"
             android:text="Veces por semana"
             android:textColor="@color/gris"
             android:textSize="12sp" />
@@ -179,7 +209,8 @@
         <Spinner
             android:id="@+id/spinnerVecesXsemana"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 
