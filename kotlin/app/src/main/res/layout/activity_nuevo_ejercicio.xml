@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azulOscuro"
-    tools:context=".nuevoAlumno">
+    tools:context=".nuevoEjercicio">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
+        android:id="@+id/toolbar5"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:background="@color/azulClaro"
@@ -21,32 +21,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgCerrarSesion3"
+        android:id="@+id/imgCerrarSesion5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/volver" />
 
     <TextView
-        android:id="@+id/toolbarAlumnos2"
+        android:id="@+id/toolbarAlumnos4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:fontFamily="@font/plus_jakarta_sans_bold"
-        android:text="Nuevo alumno"
+        android:text="Nuevo ejercicio"
         android:textColor="@color/celeste"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
-        app:layout_constraintEnd_toStartOf="@+id/tvNombreAdmin3"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toEndOf="@+id/imgCerrarSesion3"
-        app:layout_constraintTop_toTopOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar5"
+        app:layout_constraintStart_toEndOf="@+id/imgCerrarSesion5"
+        app:layout_constraintTop_toTopOf="@+id/toolbar5"
         app:layout_constraintVertical_bias="0.478" />
 
     <TextView
-        android:id="@+id/tvNombreAdmin3"
+        android:id="@+id/tvNombreAdmin5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/plus_jakarta_sans_bold"
@@ -54,20 +53,20 @@
         android:textColor="@color/celeste"
         android:textSize="10sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
-        app:layout_constraintEnd_toStartOf="@+id/menu3"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar5"
+        app:layout_constraintEnd_toStartOf="@+id/menu5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.476" />
 
     <ImageView
-        android:id="@+id/menu3"
+        android:id="@+id/menu5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar3"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menu" />
 
     <LinearLayout
@@ -76,18 +75,21 @@
         android:layout_height="390dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="2dp"
+        android:layout_marginBottom="72dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3">
 
         <TextView
-            android:id="@+id/tvNombre"
+            android:id="@+id/tvNombreEjercicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:paddingStart="15dp"
-            android:text="Nombre"
+            android:text="Nombre del ejercicio"
             android:textColor="@color/gris"
             android:textSize="12sp" />
 
@@ -107,112 +109,17 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tvApellido"
+            android:id="@+id/tvZonaMuscular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:paddingStart="15dp"
-            android:text="Apellido"
-            android:textColor="@color/gris"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/etApellidoA"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/input_fill"
-            android:ems="10"
-            android:hint="_"
-            android:inputType="text|textPersonName"
-            android:paddingStart="15dp"
-            android:textColor="@color/celeste"
-            android:textColorHint="@color/azulClaro"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|right"
-            android:layout_weight="0"
-            android:orientation="horizontal"
-            android:paddingStart="15dp">
-
-            <TextView
-                android:id="@+id/tvDni"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="150dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/plus_jakarta_sans_medium"
-                android:text="DNI"
-                android:textColor="@color/gris"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tvTelefono"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/plus_jakarta_sans_medium"
-                android:text="Teléfono"
-                android:textColor="@color/gris"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/etDniA"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/input_fill"
-                android:ems="10"
-                android:hint="_"
-                android:inputType="number"
-                android:paddingStart="15dp"
-                android:textColor="@color/celeste"
-                android:textColorHint="@color/azulClaro"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/etTelA"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/input_fill"
-                android:ems="10"
-                android:hint="_"
-                android:inputType="phone"
-                android:paddingStart="15dp"
-                android:textColor="@color/celeste"
-                android:textColorHint="@color/azulClaro"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvVecesXsemana"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/plus_jakarta_sans_medium"
-            android:paddingStart="15dp"
-            android:text="Veces por semana"
+            android:text="Zona muscular"
             android:textColor="@color/gris"
             android:textSize="12sp" />
 
         <Spinner
-            android:id="@+id/spinnerVecesXsemana"
+            android:id="@+id/spinnerVecesXsemana2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="5dp" />
@@ -220,14 +127,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btnCancelar"
