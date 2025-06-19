@@ -2,6 +2,7 @@ package com.example.gymstra
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +21,21 @@ class datosDelAlumno : AppCompatActivity() {
         }
 
         val volver = findViewById<ImageView>(R.id.imgCerrarSesion4)
+        val volver2 = findViewById<Button>(R.id.btnVolver)
+        val btnVerRutina2 = findViewById<Button>(R.id.btnVerRutina2)
 
         volver.setOnClickListener {
             val intent = Intent(this, alumnos::class.java)
+            startActivity(intent)
+        }
+
+        volver2.setOnClickListener {
+            val intent = Intent(this, alumnos::class.java)
+            startActivity(intent)
+        }
+
+        btnVerRutina2.setOnClickListener {
+            val intent = Intent(this, rutinasDelAlumno::class.java)
             startActivity(intent)
         }
 
