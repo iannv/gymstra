@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:text="Guillermo Gutierrez"
             android:textColor="@color/celeste"
             android:textSize="16sp" />
@@ -113,26 +113,35 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <TextView
-            android:id="@+id/tvAlumnoA"
-            android:layout_width="165dp"
+            android:id="@+id/tvNombreRutinaA"
+            android:layout_width="203dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/plus_jakarta_sans"
+            android:layout_weight="1"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
             android:text="Nombre rutina"
-            android:textColor="@color/gris"
-            android:textSize="16sp" />
+            android:textColor="@color/celeste"
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tvNombreAlumnoA"
+            android:id="@+id/tvFechaRutinaA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:fontFamily="@font/plus_jakarta_sans_light"
             android:text="00/00/0000"
             android:textColor="@color/celeste"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imgPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/archivo_pdf" />
     </LinearLayout>
 
     <LinearLayout
