@@ -57,7 +57,8 @@ class inicio : AppCompatActivity() {
         }
 
         imgRutinas.setOnClickListener {
-            val intent = Intent(this, rutinas::class.java)
+            //val intent = Intent(this, rutinas::class.java)
+            val intent = Intent(this, rutinasDelAlumno::class.java)
             startActivity(intent)
         }
 
