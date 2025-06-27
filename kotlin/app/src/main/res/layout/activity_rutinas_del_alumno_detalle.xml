@@ -70,124 +70,127 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menu" />
 
-    <ScrollView
-        android:id="@+id/scrolViewRutinasAlumnoDetalle"
-        android:layout_width="410dp"
-        android:layout_height="600dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="394dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="9dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar6">
+
+        <TextView
+            android:id="@+id/tvAlumnoA"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="Alumno/a:"
+            android:textColor="@color/gris"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvNombreAlumnoA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="Guillermo Gutierrez"
+            android:textColor="@color/celeste"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="394dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="9dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <TextView
+            android:id="@+id/tvNombreRutinaA"
+            android:layout_width="203dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="Nombre rutina"
+            android:textColor="@color/celeste"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvFechaRutinaA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/plus_jakarta_sans_light"
+            android:text="00/00/0000"
+            android:textColor="@color/celeste"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imgPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/archivo_pdf" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRutinasAlumno"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar6"
-        app:layout_constraintVertical_bias="0.727">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-        <LinearLayout
-            android:id="@+id/linearLayoutVerticalRutinaDelAlumnoDetalle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-            <LinearLayout
-                android:id="@+id/linearLayout7"
-                android:layout_width="394dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button15"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="Cancelar"
+            android:textColor="@color/verde" />
 
-                <TextView
-                    android:id="@+id/tvAlumnoA"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/plus_jakarta_sans"
-                    android:text="Alumno/a:"
-                    android:textColor="@color/gris"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvNombreAlumnoA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/plus_jakarta_sans_bold"
-                    android:text="Guillermo Gutierrez"
-                    android:textColor="@color/celeste"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="394dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvNombreRutinaA"
-                    android:layout_width="203dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/plus_jakarta_sans_bold"
-                    android:text="Nombre rutina"
-                    android:textColor="@color/celeste"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tvFechaRutinaA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/plus_jakarta_sans_light"
-                    android:text="00/00/0000"
-                    android:textColor="@color/celeste"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:id="@+id/imgPdf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/archivo_pdf" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout6"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="44dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnCancelar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_button15"
-                    android:fontFamily="@font/plus_jakarta_sans_bold"
-                    android:text="Cancelar"
-                    android:textColor="@color/verde" />
-
-                <Button
-                    android:id="@+id/btnGuardar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/plus_jakarta_sans_bold"
-                    android:text="Guardar"
-                    app:cornerRadius="15dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="Guardar"
+            app:cornerRadius="15dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
