@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azulOscuro"
+    tools:context=".perfilUsuario">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@color/azulClaro"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/volverEjercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/volver" />
+
+    <TextView
+        android:id="@+id/toolbarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Perfil"
+        android:textColor="@color/celeste"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toEndOf="@+id/volverEjercicio"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <TextView
+        android:id="@+id/tvNombreAdmin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Nombre"
+        android:textColor="@color/celeste"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toStartOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476" />
+
+    <ImageView
+        android:id="@+id/menu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:srcCompat="@drawable/menu" />
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="607dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|right"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/plus_jakarta_sans_medium"
+                        android:paddingStart="15dp"
+                        android:text="Cargar logo (formatos PNG y JPG)"
+                        android:textColor="@color/gris"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_button8"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/default_logo" />
+
+                    <Button
+                        android:id="@+id/btnCargarLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0"
+                        android:background="@drawable/border_button15"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
+                        android:text="Elegir imagen"
+                        android:textColor="@color/verde" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvNombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans_medium"
+                            android:paddingStart="15dp"
+                            android:text="Nombre"
+                            android:textColor="@color/gris"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/etNombreA"
+                            android:layout_width="162dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="1dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/input_fill"
+                            android:ems="10"
+                            android:hint="_"
+                            android:inputType="text|textPersonName"
+                            android:paddingStart="15dp"
+                            android:text="Alejo"
+                            android:textColor="@color/celeste"
+                            android:textColorHint="@color/azulClaro"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvApellido"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans_medium"
+                            android:paddingStart="15dp"
+                            android:text="Apellido"
+                            android:textColor="@color/gris"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/etApellidoA"
+                            android:layout_width="162dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/input_fill"
+                            android:ems="10"
+                            android:hint="_"
+                            android:inputType="text|textPersonName"
+                            android:paddingStart="15dp"
+                            android:text="Marquez"
+                            android:textColor="@color/celeste"
+                            android:textColorHint="@color/azulClaro"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/div_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/div_line"
+                    android:orientation="vertical"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvClaveActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:paddingStart="15dp"
+                    android:text="Clave actual"
+                    android:textColor="@color/gris"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/etClaveActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/input_fill"
+                    android:drawableEnd="@drawable/ver"
+                    android:ems="10"
+                    android:hint="_"
+                    android:inputType="text|textPassword"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="20dp"
+                    android:text="******"
+                    android:textColor="@color/celeste"
+                    android:textColorHint="@color/azulClaro"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvClave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:paddingStart="15dp"
+                    android:text="Nueva contraseña"
+                    android:textColor="@color/gris"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/etClave"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/input_fill"
+                    android:ems="10"
+                    android:hint="_"
+                    android:inputType="text|textPassword"
+                    android:paddingStart="15dp"
+                    android:textColor="@color/celeste"
+                    android:textColorHint="@color/azulClaro"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvRepetirClave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:paddingStart="15dp"
+                    android:text="Repetir contraseña"
+                    android:textColor="@color/gris"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/etRepetirClave"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/input_fill"
+                    android:ems="10"
+                    android:hint="_"
+                    android:inputType="text|textPassword"
+                    android:paddingStart="15dp"
+                    android:textColor="@color/celeste"
+                    android:textColorHint="@color/azulClaro"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="44dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_button15"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Cancelar"
+                    android:textColor="@color/verde" />
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Guardar"
+                    app:cornerRadius="15dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

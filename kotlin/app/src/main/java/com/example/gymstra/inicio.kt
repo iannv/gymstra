@@ -29,6 +29,7 @@ class inicio : AppCompatActivity() {
         val imgAlumnos = findViewById<ImageView>(R.id.imgAlumnos)
         val imgEjercicios = findViewById<ImageView>(R.id.imgEjercicios)
         val imgRutinas = findViewById<ImageView>(R.id.imgRutina)
+        val tvNombreAdmin = findViewById<TextView>(R.id.tvNombreAdmin)
 
         // Menú
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -64,6 +65,11 @@ class inicio : AppCompatActivity() {
 
         cerrarSesion.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        tvNombreAdmin.setOnClickListener {
+            val intent = Intent(this, perfilUsuario::class.java)
             startActivity(intent)
         }
 
