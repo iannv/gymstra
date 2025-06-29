@@ -31,7 +31,7 @@
         app:srcCompat="@drawable/volver" />
 
     <TextView
-        android:id="@+id/toolbarAlumnos"
+        android:id="@+id/toolbarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/plus_jakarta_sans_bold"

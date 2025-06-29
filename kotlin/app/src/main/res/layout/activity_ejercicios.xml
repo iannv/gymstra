@@ -31,7 +31,7 @@
         app:srcCompat="@drawable/volver" />
 
     <TextView
-        android:id="@+id/toolbarAlumnos"
+        android:id="@+id/toolbarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/plus_jakarta_sans_bold"
@@ -40,9 +40,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
-        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toEndOf="@+id/volverEjercicio"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.478" />
 
     <TextView
         android:id="@+id/tvNombreAdmin2"
