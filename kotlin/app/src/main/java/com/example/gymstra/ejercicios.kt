@@ -41,6 +41,9 @@ class ejercicios : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Chips
+
+
 
     }
 }
