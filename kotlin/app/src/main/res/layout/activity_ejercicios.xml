@@ -70,51 +70,198 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar2"
         app:srcCompat="@drawable/menu" />
 
-    <EditText
-        android:id="@+id/buscar"
-        android:layout_width="350dp"
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@drawable/search"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:fontFamily="@font/plus_jakarta_sans"
-        android:hint="Buscar"
-        android:inputType="text"
-        android:textColor="@color/celeste"
-        android:textColorHint="@color/gris"
-        android:textSize="14sp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Abdominales"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Antebrazos"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Bíceps"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Cuádriceps"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Espalda"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Gemelos"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Glúteos"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Hombros"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Isquiotibiales"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Pecho"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Tríceps"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <Button
         android:id="@+id/btnNuevoEjercicio"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:height="40dp"
         android:drawableLeft="@drawable/agregar"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         android:text="Nuevo ejercicio"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buscar" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEjercicios"
-        android:layout_width="0dp"
-        android:layout_height="483dp"
+        android:layout_width="410dp"
+        android:layout_height="501dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNuevoEjercicio"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnNuevoEjercicio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

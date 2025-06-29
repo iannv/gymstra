@@ -6,12 +6,18 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardItemRutina"
         android:layout_width="350dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:cardCornerRadius="20dp">
+        android:minHeight="60dp"
+        app:cardCornerRadius="20dp"
+        app:contentPaddingBottom="10dp"
+        app:contentPaddingLeft="15dp"
+        app:contentPaddingRight="15dp"
+        app:contentPaddingTop="10dp"
+        app:strokeWidth="0dp">
 
         <TextView
             android:id="@+id/tvRutinaAlumno"
@@ -19,12 +25,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/plus_jakarta_sans_bold"
-            android:shadowColor="@color/black"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="25"
+            android:shadowColor="@color/azulClaro"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
             android:text="Nombre rutina"
-            android:textColor="@color/celeste"
-            android:textSize="20dp" />
-    </androidx.cardview.widget.CardView>
+            android:textColor="@color/azulOscuro"
+            android:textSize="18dp" />
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
