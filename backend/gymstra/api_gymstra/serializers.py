@@ -6,6 +6,7 @@ class AdministradorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Administrador
         fields = '__all__'
+        extra_kwargs = {'clave': {'write_only': True}}
 
 
 # Alumno
@@ -13,6 +14,7 @@ class AlumnoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alumno
         fields = '__all__'
+        extra_kwargs = {'fecha_ingreso': {'read_only': True}}
 
 
 # CUOTA

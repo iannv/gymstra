@@ -1,5 +1,7 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
+from .utils import calcularFechaVto
 
 # ADMINISTRADOR
 class Administrador(AbstractUser):
@@ -28,9 +30,9 @@ class Alumno(models.Model):
     nombre = models.CharField(max_length=100, blank=False, null=False)
     apellido = models.CharField(max_length=100, blank=False, null=False)
     telefono = models.CharField(max_length=10)
-    fecha_ingreso = models.DateField(blank=False, null=False)
-    vecesXsemana = models.IntegerField()
-    fecha_ultimo_dia = models.DateField()
+    fecha_ingreso = models.DateField(auto_now_add=True, editable=False)
+    vecesXsemana = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(7)])
+    fecha_ultimo_dia = models.DateField(auto_now=True)
     activo = models.BooleanField(default=True)
     id_administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
     clase = models.ManyToManyField('Clase')
@@ -48,10 +50,10 @@ class Alumno(models.Model):
 # CUOTA
 class Cuota(models.Model):
     id_cuota = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
-    fecha_pago = models.DateField(blank=False, null=False)
-    fecta_vto = models.DateField(blank=False, null=False)
+    fecha_pago = models.DateField(auto_now=True)
+    fecta_vto = models.DateField(default=calcularFechaVto)
     estado = models.BooleanField(blank=False, null=False, default=False)
-    monto = models.FloatField(blank=False, null=False)
+    monto = models.DecimalField(decimal_places=2, max_digits=10)
     id_alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
     
     class Meta:
@@ -68,7 +70,7 @@ class Clase(models.Model):
     id_clase = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
     dias = models.CharField(max_length=255)
     horario = models.CharField(max_length=255)
-    precio = models.FloatField()
+    precio = models.DecimalField(decimal_places=2, max_digits=10)
     cantidad_alumnos = models.IntegerField()
     
     class Meta:
@@ -83,8 +85,8 @@ class Clase(models.Model):
 # ASISTENCIA
 class Asistencia(models.Model):
     id_asistencia = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
-    fecha = models.DateField()
-    monto = models.FloatField()
+    fecha = models.DateField(auto_now_add=True, editable=False)
+    monto = models.DecimalField(decimal_places=2, max_digits=10)
     id_clase = models.ForeignKey(Clase, on_delete=models.CASCADE)
     id_alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
     
