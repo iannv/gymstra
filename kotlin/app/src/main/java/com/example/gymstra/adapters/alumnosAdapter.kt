@@ -7,15 +7,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
+import com.example.gymstra.alumnos
+import com.example.gymstra.models.AlumnoModel
 
-class alumnosAdapter : RecyclerView.Adapter<alumnosAdapter.ViewHolder>(){
+class alumnosAdapter(private val alumnos: List<AlumnoModel>) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>(){
 
-    val alumnos = arrayOf(
-        "Joaquin Ensalmo Gutierrez",
-        "Ian Vázquez",
-        "Felipe Peralta",
-        "Patricia Andrea De los Santos",
-    )
+    //val alumnos = arrayOf(
+      //  "Joaquin Ensalmo Gutierrez",
+        //"Ian Vázquez",
+        //"Felipe Peralta",
+        //"Patricia Andrea De los Santos",
+    //)
 
     val imgVerRutina = arrayOf("Ver rutina")
 
