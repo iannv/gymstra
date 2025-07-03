@@ -2,6 +2,7 @@ package com.example.gymstra
 
 import android.content.Intent
 import android.os.Bundle
+import android.telecom.Call
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +13,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.adapters.alumnosAdapter
+import com.example.gymstra.models.AlumnoModel
+import com.example.gymstra.services.AlumnoService
+import com.example.gymstra.services.ServiceBuilder
+import retrofit2.Response
 
 class alumnos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +34,8 @@ class alumnos : AppCompatActivity() {
 
         // Adaptador alumnosAdapter
         val recyclerAlumnos = findViewById<RecyclerView>(R.id.recyclerAlumnos)
-        recyclerAlumnos.layoutManager = LinearLayoutManager(this)
-        recyclerAlumnos.adapter = alumnosAdapter()
-
+        //recyclerAlumnos.layoutManager = LinearLayoutManager(this)
+        //recyclerAlumnos.adapter = alumnosAdapter()
 
         btnNuevoAlumo.setOnClickListener {
             val intent = Intent(this, nuevoAlumno::class.java)
@@ -41,6 +45,26 @@ class alumnos : AppCompatActivity() {
         volver.setOnClickListener {
             val intent = Intent(this, inicio::class.java)
             startActivity(intent)
+        }
+
+        // Servicio
+        val alumnoService = ServiceBuilder.buildService(AlumnoService::class.java)
+        val call = alumnoService.getAlumnos()
+
+        call.enqueue(object : retrofit2.Callback<List<AlumnoModel>> {
+            override fun onResponse(call: retrofit2.Call<List<AlumnoModel>>, response: Response<List<AlumnoModel>>) {
+                if (response.isSuccessful){
+                    recyclerAlumnos.apply {
+                        setHasFixedSize(true)
+                        layoutManager = LinearLayoutManager(this@alumnos)
+                        adapter = alumnosAdapter(response.body()!!)
+                    }
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<List<AlumnoModel>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
         }
 
     }
