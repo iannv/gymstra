@@ -8,11 +8,11 @@ data class AlumnoModel(
     val nombre : String,
     val apellido : String,
     val telefono : String,
-    val fecha_ingreso : Date,
+    val fecha_ingreso : String,
     val vecesXsemana : Int,
-    val fecha_ultimo_dia : Date,
+    val fecha_ultimo_dia : String,
     val activo : Boolean,
     val id_administrador : Int,
-    val clase : String,
-    val rutina : String
+    val clase : List<Int>,
+    val rutina : List<Int>,
 )

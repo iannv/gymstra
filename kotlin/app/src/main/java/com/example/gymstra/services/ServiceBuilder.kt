@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ServiceBuilder {
 
     // Ruta de la API
-    private const val URL = "http://127.0.0.1:8000/"
+    private const val URL = "http://10.0.2.2:8000/"
 
     // Crear el cliente OkHttp
     private val okHttp = OkHttpClient.Builder()
