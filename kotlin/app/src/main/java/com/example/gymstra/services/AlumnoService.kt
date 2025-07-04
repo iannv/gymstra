@@ -13,5 +13,6 @@ interface AlumnoService {
     fun getAlumnos(): retrofit2.Call<List<AlumnoModel>>
 
     // Obtener alumno por ID
+
 }
 

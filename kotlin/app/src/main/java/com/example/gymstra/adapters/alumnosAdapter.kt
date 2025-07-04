@@ -12,13 +12,6 @@ import com.example.gymstra.models.AlumnoModel
 
 class alumnosAdapter(private val alumnos: List<AlumnoModel>) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>(){
 
-    //val alumnos = arrayOf(
-      //  "Joaquin Ensalmo Gutierrez",
-        //"Ian Vázquez",
-        //"Felipe Peralta",
-        //"Patricia Andrea De los Santos",
-    //)
-
     val imgVerRutina = arrayOf("Ver rutina")
 
     val imgEliminar = arrayOf(R.drawable.eliminar)
@@ -35,7 +28,8 @@ class alumnosAdapter(private val alumnos: List<AlumnoModel>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvItemAlumno.text = alumnos[position]
+        val alumno = alumnos[position]
+        holder.tvItemAlumno.text = "${alumno.nombre} ${alumno.apellido}"
         holder.tvItemVerRutina.text = imgVerRutina[0]
         holder.eliminarAlumno.setImageResource(imgEliminar[0])
     }
@@ -44,3 +38,4 @@ class alumnosAdapter(private val alumnos: List<AlumnoModel>) : RecyclerView.Adap
         return alumnos.size
     }
 }
+

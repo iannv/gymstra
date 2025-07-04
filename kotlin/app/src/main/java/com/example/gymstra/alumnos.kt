@@ -3,9 +3,11 @@ package com.example.gymstra
 import android.content.Intent
 import android.os.Bundle
 import android.telecom.Call
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -34,8 +36,6 @@ class alumnos : AppCompatActivity() {
 
         // Adaptador alumnosAdapter
         val recyclerAlumnos = findViewById<RecyclerView>(R.id.recyclerAlumnos)
-        //recyclerAlumnos.layoutManager = LinearLayoutManager(this)
-        //recyclerAlumnos.adapter = alumnosAdapter()
 
         btnNuevoAlumo.setOnClickListener {
             val intent = Intent(this, nuevoAlumno::class.java)
@@ -52,20 +52,25 @@ class alumnos : AppCompatActivity() {
         val call = alumnoService.getAlumnos()
 
         call.enqueue(object : retrofit2.Callback<List<AlumnoModel>> {
-            override fun onResponse(call: retrofit2.Call<List<AlumnoModel>>, response: Response<List<AlumnoModel>>) {
-                if (response.isSuccessful){
+            override fun onResponse(
+                call: retrofit2.Call<List<AlumnoModel>>,
+                response: Response<List<AlumnoModel>>
+            ) {
+                if (response.isSuccessful) {
                     recyclerAlumnos.apply {
-                        setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(this@alumnos)
                         adapter = alumnosAdapter(response.body()!!)
                     }
                 }
+                else {
+                    Toast.makeText(this@alumnos, "Error al mostrar la lista de alumnos", Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onFailure(call: retrofit2.Call<List<AlumnoModel>>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@alumnos, "Error al obtener los alumnos", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit", "ERROR: ${t.message}")
             }
-        }
-
+        })
     }
 }
