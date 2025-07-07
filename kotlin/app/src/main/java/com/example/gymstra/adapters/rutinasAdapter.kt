@@ -8,23 +8,9 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
+import com.example.gymstra.models.RutinaModel
 
-class rutinasAdapter : RecyclerView.Adapter<rutinasAdapter.ViewHolder>() {
-
-    val rutinas = arrayOf(
-        "Full body",
-        "ABS",
-        "Funcional",
-        "Tren superior",
-        "Full body",
-        "ABS",
-        "Funcional",
-        "Tren superior",
-        "Full body",
-        "ABS",
-        "Funcional",
-        "Tren superior"
-    )
+class rutinasAdapter(private val rutinas : List<RutinaModel>) : RecyclerView.Adapter<rutinasAdapter.ViewHolder>() {
 
     val gradientCards = arrayOf(
         R.drawable.gradient_azul_celeste,
@@ -45,7 +31,8 @@ class rutinasAdapter : RecyclerView.Adapter<rutinasAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nombreRutina.text = rutinas[position]
+        val rutina = rutinas[position]
+        holder.nombreRutina.text = rutina.nombre
 
         val context = holder.itemView.context
         val fondo = ContextCompat.getDrawable(context, gradientCards[position % gradientCards.size])
