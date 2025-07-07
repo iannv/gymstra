@@ -7,15 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
+import com.example.gymstra.models.EjercicioModel
 
-class ejerciciosAdapter : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
+class ejerciciosAdapter(private val ejercicios: List<EjercicioModel>) : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
 
-    val ejercicios = arrayOf(
-        "Apertura inclinada con mancuernas",
-        "Press horizontal con barra",
-        "Press banca vertical con mancuernas",
-        "Pectoralera"
-    )
     val imgEditarEjercicio = arrayOf(R.drawable.editar_verde)
     val eliminarEjercicio = arrayOf(R.drawable.eliminar )
 
@@ -32,7 +27,8 @@ class ejerciciosAdapter : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvItemEjercicio.text = ejercicios[position]
+        val ejercicio = ejercicios[position]
+        holder.tvItemEjercicio.text = ejercicio.nombre
         holder.imgEditarEjercicio.setImageResource(imgEditarEjercicio[0])
         holder.eliminarEjercicio.setImageResource(eliminarEjercicio[0])
     }

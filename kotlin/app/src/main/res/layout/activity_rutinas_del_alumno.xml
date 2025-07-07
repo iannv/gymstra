@@ -87,7 +87,8 @@
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:text="Nombre Apellido"
             android:textColor="@color/celeste"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,17 +107,29 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvCantidadRutinas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
-                android:text="2"
+                android:text="0"
                 android:textColor="@color/celeste"
                 android:textSize="12sp" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/nadaParaMostrar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="Nada para mostrar"
+            android:textColor="@color/celeste"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRutinas"
