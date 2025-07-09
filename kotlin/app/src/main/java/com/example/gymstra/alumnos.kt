@@ -2,11 +2,11 @@ package com.example.gymstra
 
 import android.content.Intent
 import android.os.Bundle
-import android.telecom.Call
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -28,7 +28,13 @@ class alumnos : AppCompatActivity() {
 
     // Adapter
     lateinit var recyclerAlumnos: RecyclerView
+    lateinit var alumnosAdapter: alumnosAdapter
     lateinit var sinRegistros: TextView
+
+    lateinit var listaAlumnos: List<AlumnoModel>
+
+    lateinit var filtro: ImageView
+    lateinit var buscador: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +47,27 @@ class alumnos : AppCompatActivity() {
         }
 
         recyclerAlumnos = findViewById(R.id.recyclerAlumnos)
+        sinRegistros = findViewById(R.id.nadaParaMostrarAlumnos)
+        buscador = findViewById(R.id.buscador)
         val btnNuevoAlumo = findViewById<Button>(R.id.btnNuevoAlumno)
         val volver = findViewById<ImageView>(R.id.imgCerrarSesion2)
-        sinRegistros = findViewById(R.id.nadaParaMostrarAlumnos)
+
+//        val buscarView = buscador.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+//        buscarView.setTextColor(ContextCompat.getColor(this, R.color.celeste))
+
+
+        buscador.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                listaFiltrada(newText)
+                return true
+            }
+
+        })
+
 
         btnNuevoAlumo.setOnClickListener {
             val intent = Intent(this, nuevoAlumno::class.java)
@@ -62,6 +86,7 @@ class alumnos : AppCompatActivity() {
     // Cargar la lista de alumnos
     private fun cargarListaAlumnos() {
         val call = alumnoService.getAlumnos()
+        filtro = findViewById(R.id.filtro)
 
         call.enqueue(object : retrofit2.Callback<List<AlumnoModel>> {
             override fun onResponse(
@@ -69,7 +94,7 @@ class alumnos : AppCompatActivity() {
                 response: Response<List<AlumnoModel>>
             ) {
                 if (response.isSuccessful) {
-                    val listaAlumnos = response.body()?: emptyList()
+                    listaAlumnos = response.body()?: emptyList()
                     recyclerAlumnos.apply {
                         if (listaAlumnos.isEmpty()) {
                             sinRegistros.visibility = View.VISIBLE
@@ -77,9 +102,14 @@ class alumnos : AppCompatActivity() {
                         }
                         else{
                             layoutManager = LinearLayoutManager(this@alumnos)
-                            adapter = alumnosAdapter(listaAlumnos) { idAlumno, nombreAlumno ->
+                            alumnosAdapter = alumnosAdapter(listaAlumnos) { idAlumno, nombreAlumno ->
                                 confirmarEliminarAlumno(idAlumno, nombreAlumno)
                             }
+                            recyclerAlumnos.adapter = alumnosAdapter
+                        }
+
+                        filtro.setOnClickListener {
+                            Toast.makeText(this@alumnos, "Filtro", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -134,6 +164,31 @@ class alumnos : AppCompatActivity() {
             }
             .show()
     }
+
+
+    // Lista filtrada para el buscador
+    private fun listaFiltrada(text: String?) {
+        var nuevaListaFiltrada = mutableListOf<AlumnoModel>()
+        for (alumno in listaAlumnos) {
+            if (
+                alumno.nombre.lowercase().contains(text.toString().lowercase()) ||
+                alumno.apellido.lowercase().contains(text.toString().lowercase())
+                ) {
+                nuevaListaFiltrada.add(alumno)
+            }
+        }
+
+        if (nuevaListaFiltrada.isEmpty()){
+            sinRegistros.visibility = View.VISIBLE
+            sinRegistros.text = "No se encontraron alumnos"
+            // todo: arreglar cuando no se encuentran resultados, no vuelve a mostrar la lista al limpiar el campo buscador
+            recyclerAlumnos.visibility = View.GONE
+        }
+        else {
+            alumnosAdapter.setListaFiltrada(nuevaListaFiltrada)
+        }
+    }
+
 
 }
 

@@ -12,7 +12,7 @@ import com.example.gymstra.R
 import com.example.gymstra.alumnos
 import com.example.gymstra.models.AlumnoModel
 
-class alumnosAdapter(private val alumnos: List<AlumnoModel>, private val eliminarAlumnoId: (Int, String) -> Unit) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>(){
+class alumnosAdapter(private var alumnos: List<AlumnoModel>, private val eliminarAlumnoId: (Int, String) -> Unit) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>() {
 
     val imgVerRutina = arrayOf("Ver rutina")
 
@@ -25,7 +25,8 @@ class alumnosAdapter(private val alumnos: List<AlumnoModel>, private val elimina
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val alumno = LayoutInflater.from(parent.context).inflate(R.layout.item_alumno, parent, false)
+        val alumno =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_alumno, parent, false)
         return ViewHolder(alumno)
     }
 
@@ -46,5 +47,13 @@ class alumnosAdapter(private val alumnos: List<AlumnoModel>, private val elimina
     override fun getItemCount(): Int {
         return alumnos.size
     }
+
+
+    // Setear lista filtrada para el buscador
+    fun setListaFiltrada(alumnos: List<AlumnoModel>){
+        this.alumnos = alumnos
+        notifyDataSetChanged()
+    }
+
 }
 
