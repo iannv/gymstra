@@ -1,16 +1,18 @@
 package com.example.gymstra.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
 import com.example.gymstra.alumnos
 import com.example.gymstra.models.AlumnoModel
 
-class alumnosAdapter(private val alumnos: List<AlumnoModel>) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>(){
+class alumnosAdapter(private val alumnos: List<AlumnoModel>, private val eliminarAlumnoId: (Int, String) -> Unit) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>(){
 
     val imgVerRutina = arrayOf("Ver rutina")
 
@@ -32,6 +34,13 @@ class alumnosAdapter(private val alumnos: List<AlumnoModel>) : RecyclerView.Adap
         holder.tvItemAlumno.text = "${alumno.nombre} ${alumno.apellido}"
         holder.tvItemVerRutina.text = imgVerRutina[0]
         holder.eliminarAlumno.setImageResource(imgEliminar[0])
+
+        holder.eliminarAlumno.setOnClickListener {
+            alumno.id_alumno?.let { id ->
+                val nombreCompleto = "${alumno.nombre} ${alumno.apellido}"
+                eliminarAlumnoId(id, nombreCompleto)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
