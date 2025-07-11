@@ -1,18 +1,46 @@
 package com.example.gymstra.models
 
-import java.util.Date
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 data class AlumnoModel(
     val id_alumno : Int? = 0,
-    val dni : String,
-    val nombre : String,
-    val apellido : String,
-    val telefono : String,
+    var dni : String,
+    var nombre : String,
+    var apellido : String,
+    var telefono : String,
     val fecha_ingreso : String,
-    val vecesXsemana : Int,
+    var vecesXsemana : Int? = null, // Despues sacar el null
     val fecha_ultimo_dia : String,
     val activo : Boolean,
     val id_administrador : Int,
-    val clase : List<Int>,
-    val rutina : List<Int>,
+    val clase : List<Int> = emptyList(),
+    val rutina : List<Int> = emptyList(),
 )
+
+fun nuevoAlumnoModel(
+    dni: String,
+    nombre: String,
+    apellido: String,
+    telefono: String,
+    //vecesXsemana: Int,
+    idAdministrador: Int
+): AlumnoModel {
+    val fecha = Calendar.getInstance()
+    val fechaFormato = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+    val fechaHoy = fechaFormato.format(fecha.time)
+
+    return AlumnoModel(
+        dni = dni,
+        nombre = nombre,
+        apellido = apellido,
+        telefono = telefono,
+        fecha_ingreso = fechaHoy,
+        //vecesXsemana = vecesXsemana,
+        fecha_ultimo_dia = fechaHoy,
+        activo = true,
+        id_administrador = idAdministrador
+    )
+}
+

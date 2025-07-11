@@ -5,7 +5,7 @@ from .views import *
 router = DefaultRouter()
 router.register(r'alumnos', AlumnoView, basename='alumnos')
 router.register(r'cuotas', CuotaView , basename='cuotas')
-router.register(r'clases', ClaseView, basename='clases')
+# router.register(r'clases', ClaseView, basename='clases')
 router.register(r'asistencias', AsistenciaView, basename='asistencias')
 router.register(r'zona-muscular', ZonaMuscularView, basename='zona-muscular')
 router.register(r'ejercicios', EjercicioView, basename='ejercicios')
