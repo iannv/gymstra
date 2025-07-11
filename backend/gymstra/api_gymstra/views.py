@@ -48,11 +48,11 @@ class CuotaView(viewsets.ModelViewSet):
 
 
 # CLASE
-class ClaseView(viewsets.ModelViewSet):
-    serializer_class = ClaseSerializer
+# class ClaseView(viewsets.ModelViewSet):
+    # serializer_class = ClaseSerializer
     # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
-    queryset = Clase.objects.all()
+    # permission_classes = [permissions.AllowAny]
+    # queryset = Clase.objects.all()
 
 
 # ASISTENCIA

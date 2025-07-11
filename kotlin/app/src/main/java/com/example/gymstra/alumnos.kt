@@ -13,6 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.adapters.alumnosAdapter
@@ -179,13 +180,15 @@ class alumnos : AppCompatActivity() {
         }
 
         if (nuevaListaFiltrada.isEmpty()){
-            sinRegistros.visibility = View.VISIBLE
-            sinRegistros.text = "No se encontraron alumnos"
-            // todo: arreglar cuando no se encuentran resultados, no vuelve a mostrar la lista al limpiar el campo buscador
             recyclerAlumnos.visibility = View.GONE
+            sinRegistros.visibility = View.VISIBLE
+            sinRegistros.text = "No se encontró ningún alumno"
         }
         else {
+            sinRegistros.visibility = View.GONE
+            recyclerAlumnos.visibility = View.VISIBLE
             alumnosAdapter.setListaFiltrada(nuevaListaFiltrada)
+
         }
     }
 

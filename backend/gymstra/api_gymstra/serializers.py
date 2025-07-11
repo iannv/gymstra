@@ -25,10 +25,10 @@ class CuotaSerializer(serializers.ModelSerializer):
 
 
 # CLASE
-class ClaseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Clase
-        fields = '__all__'
+# class ClaseSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Clase
+#         fields = '__all__'
 
 
 # ASISTENCIA

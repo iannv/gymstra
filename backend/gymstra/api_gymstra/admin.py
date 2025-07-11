@@ -5,7 +5,7 @@ from .models import *
 admin.site.register(Administrador)
 admin.site.register(Alumno)
 admin.site.register(Cuota)
-admin.site.register(Clase)
+# admin.site.register(Clase)
 admin.site.register(Ejercicio)
 admin.site.register(Rutina)
 admin.site.register(Asistencia)
