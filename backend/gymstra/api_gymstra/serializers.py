@@ -11,6 +11,8 @@ class AdministradorSerializer(serializers.ModelSerializer):
 
 # Alumno
 class AlumnoSerializer(serializers.ModelSerializer):
+    rutina = serializers.PrimaryKeyRelatedField(required=False, allow_empty=True, many=True, queryset=Rutina.objects.all())
+    
     class Meta:
         model = Alumno
         fields = '__all__'

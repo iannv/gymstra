@@ -5,7 +5,7 @@ from .utils import calcularFechaVto
 
 # ADMINISTRADOR
 class Administrador(AbstractUser):
-    id_administrador = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_administrador = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     nombre = models.CharField(max_length=255)
     email = models.EmailField(max_length=320, unique=True)
     clave = models.CharField(max_length=50)
@@ -25,7 +25,7 @@ class Administrador(AbstractUser):
 
 # ALUMNO
 class Alumno(models.Model):
-    id_alumno = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_alumno = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     dni = models.CharField(max_length=8, blank=False, null=False)
     nombre = models.CharField(max_length=100, blank=False, null=False)
     apellido = models.CharField(max_length=100, blank=False, null=False)
@@ -49,7 +49,7 @@ class Alumno(models.Model):
 
 # CUOTA
 class Cuota(models.Model):
-    id_cuota = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_cuota = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     fecha_pago = models.DateField(auto_now=True)
     fecta_vto = models.DateField(default=calcularFechaVto)
     estado = models.BooleanField(blank=False, null=False, default=False)
@@ -84,7 +84,7 @@ class Cuota(models.Model):
 
 # ASISTENCIA
 class Asistencia(models.Model):
-    id_asistencia = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_asistencia = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     fecha = models.DateField(auto_now_add=True, editable=False)
     monto = models.DecimalField(decimal_places=2, max_digits=10)
     # id_clase = models.ForeignKey(Clase, on_delete=models.CASCADE)
@@ -101,7 +101,7 @@ class Asistencia(models.Model):
 
 # ZONA MUSCULAR
 class ZonaMuscular(models.Model):
-    id_zona_muscular = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_zona_muscular = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     zona = models.CharField(max_length=50)
     
     class Meta:
@@ -115,7 +115,7 @@ class ZonaMuscular(models.Model):
 
 # EJERCICIO
 class Ejercicio(models.Model):
-    id_ejercicio = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_ejercicio = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     nombre = models.CharField(max_length=255)
     id_zona_muscular = models.ForeignKey(ZonaMuscular, on_delete=models.CASCADE)
     
@@ -130,7 +130,7 @@ class Ejercicio(models.Model):
 
 # RUTINA
 class Rutina(models.Model):
-    id_rutina = models.IntegerField(primary_key=True, unique=True, blank=False, null=False)
+    id_rutina = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     nombre = models.CharField(max_length=100)
     series = models.IntegerField()  
     repeticiones = models.IntegerField()
