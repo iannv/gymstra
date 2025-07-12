@@ -191,7 +191,5 @@ class alumnos : AppCompatActivity() {
 
         }
     }
-
-
 }
 
