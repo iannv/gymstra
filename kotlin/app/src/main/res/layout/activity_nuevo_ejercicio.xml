@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar5">
 
         <TextView
             android:id="@+id/tvNombreEjercicio"
@@ -94,7 +94,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/etNombreA"
+            android:id="@+id/etNombreE"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -119,7 +119,7 @@
             android:textSize="12sp" />
 
         <Spinner
-            android:id="@+id/spinnerVecesXsemana2"
+            android:id="@+id/spinnerZonaMuscular"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="5dp" />
@@ -137,7 +137,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btnCancelar"
+            android:id="@+id/cancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -148,7 +148,7 @@
             android:textColor="@color/verde" />
 
         <Button
-            android:id="@+id/btnGuardar"
+            android:id="@+id/guardar"
             android:layout_width="wrap_content"
             android:layout_height="54dp"
             android:layout_weight="1"
