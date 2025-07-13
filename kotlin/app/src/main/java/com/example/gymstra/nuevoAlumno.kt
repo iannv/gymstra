@@ -1,6 +1,5 @@
 package com.example.gymstra
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +13,6 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.collection.intListOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.gymstra.models.AlumnoModel
@@ -40,7 +38,7 @@ class nuevoAlumno : AppCompatActivity() {
         val apellido = findViewById<EditText>(R.id.etApellidoA)
         val dni = findViewById<EditText>(R.id.etDniA)
         val tel = findViewById<EditText>(R.id.etTelA)
-        val guardar = findViewById<Button>(R.id.btnGuardar)
+        val guardar = findViewById<Button>(R.id.guardar)
         val cancelar = findViewById<Button>(R.id.btnCancelar)
         val volver = findViewById<ImageView>(R.id.imgCerrarSesion3)
 

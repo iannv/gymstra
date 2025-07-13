@@ -16,10 +16,14 @@ import com.example.gymstra.adapters.ejerciciosAdapter
 import com.example.gymstra.models.EjercicioModel
 import com.example.gymstra.services.EjercicioService
 import com.example.gymstra.services.ServiceBuilder
+import com.google.android.material.chip.Chip
 import retrofit2.Call
 import retrofit2.Response
 
 class ejercicios : AppCompatActivity() {
+    lateinit var ejercicioService: EjercicioService
+    lateinit var recyclerViewEjercicios: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,10 +33,11 @@ class ejercicios : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Adaptador ejerciciosAdapter
-        val recyclerViewEjercicios = findViewById<RecyclerView>(R.id.recyclerViewEjercicios)
 
-        val nuevoEjercicio = findViewById<Button>(R.id.btnNuevoEjercicio)
+        // Adaptador
+        recyclerViewEjercicios = findViewById(R.id.recyclerViewEjercicios)
+
+        val btnNuevoEjercicio = findViewById<Button>(R.id.btnNuevoEjercicio)
         val volver = findViewById<ImageView>(R.id.volverEjercicio)
 
         volver.setOnClickListener {
@@ -40,15 +45,15 @@ class ejercicios : AppCompatActivity() {
             startActivity(intent)
         }
 
-        nuevoEjercicio.setOnClickListener {
+        btnNuevoEjercicio.setOnClickListener {
             val intent = Intent(this, nuevoEjercicio::class.java)
             startActivity(intent)
         }
 
         // Servicio
-        val ejercicioService = ServiceBuilder.buildService(EjercicioService::class.java)
-        val call = ejercicioService.getEjercicios()
+        ejercicioService = ServiceBuilder.buildService(EjercicioService::class.java)
 
+        val call = ejercicioService.getEjercicios()
         call.enqueue(object : retrofit2.Callback<List<EjercicioModel>> {
             override fun onResponse(
                 call: Call<List<EjercicioModel>>,
@@ -70,6 +75,10 @@ class ejercicios : AppCompatActivity() {
                 Log.e("Retrofit", "ERROR: ${t.message}")
             }
         })
+
+
+        // Eliminar un ejercicio
+        //val callEliminar = ejercicioService.deleteEjercicio()
 
 
         // Chips
