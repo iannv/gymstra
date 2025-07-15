@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
 import com.example.gymstra.models.EjercicioModel
 
-class ejerciciosAdapter(private val ejercicios: List<EjercicioModel>) : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
+class ejerciciosAdapter(private val ejercicios: List<EjercicioModel>, private val eliminarEjercicioId: (Int, String) -> Unit) : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
 
     val imgEditarEjercicio = arrayOf(R.drawable.editar_verde)
     val eliminarEjercicio = arrayOf(R.drawable.eliminar )
@@ -31,6 +31,13 @@ class ejerciciosAdapter(private val ejercicios: List<EjercicioModel>) : Recycler
         holder.tvItemEjercicio.text = ejercicio.nombre
         holder.imgEditarEjercicio.setImageResource(imgEditarEjercicio[0])
         holder.eliminarEjercicio.setImageResource(eliminarEjercicio[0])
+
+        holder.eliminarEjercicio.setOnClickListener {
+            ejercicio.id_ejercicio?.let { id ->
+                val nombreEjercicio = ejercicio.nombre
+                eliminarEjercicioId(id, nombreEjercicio)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
