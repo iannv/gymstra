@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isEmpty
@@ -52,9 +54,6 @@ class alumnos : AppCompatActivity() {
         buscador = findViewById(R.id.buscador)
         val btnNuevoAlumo = findViewById<Button>(R.id.btnNuevoAlumno)
         val volver = findViewById<ImageView>(R.id.imgCerrarSesion2)
-
-//        val buscarView = buscador.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
-//        buscarView.setTextColor(ContextCompat.getColor(this, R.color.celeste))
 
 
         buscador.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

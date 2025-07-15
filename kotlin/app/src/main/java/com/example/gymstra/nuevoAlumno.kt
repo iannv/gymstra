@@ -45,7 +45,7 @@ class nuevoAlumno : AppCompatActivity() {
         // Llenar el spinner
         val vecesXsemana = findViewById<Spinner>(R.id.spinnerVecesXsemana)
         val item = listOf(1, 2, 3, 4, 5, 6, 7)
-        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, item)
+        val adaptador = ArrayAdapter(this, R.layout.item_font_text, item)
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         vecesXsemana.adapter = adaptador
 
