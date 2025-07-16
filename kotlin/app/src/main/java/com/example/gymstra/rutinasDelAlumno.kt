@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -21,6 +22,12 @@ import retrofit2.Call
 import retrofit2.Response
 
 class rutinasDelAlumno : AppCompatActivity() {
+
+    lateinit var listaRutinas: List<RutinaModel>
+    lateinit var recyclerRutinas: RecyclerView
+    lateinit var rutinasAdapter: rutinasAdapter
+    lateinit var nadaParaMostrar: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +41,21 @@ class rutinasDelAlumno : AppCompatActivity() {
         val volver = findViewById<ImageView>(R.id.volverRutina)
         val tvCantidadRutinas = findViewById<TextView>(R.id.tvCantidadRutinas)
         val tvCantRutinas = findViewById<TextView>(R.id.tvCantRutinas)
-        val nadaParaMostrar = findViewById<TextView>(R.id.nadaParaMostrar)
+        val buscador = findViewById<SearchView>(R.id.buscador)
+        nadaParaMostrar = findViewById(R.id.nadaParaMostrar)
+        listaRutinas = emptyList()
+        recyclerRutinas = findViewById(R.id.recyclerViewRutinas)
+
+        buscador.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                rutinaFiltrada(newText)
+                return true
+            }
+        })
 
         volver.setOnClickListener {
             val intent = Intent(this, inicio::class.java)
@@ -69,9 +90,12 @@ class rutinasDelAlumno : AppCompatActivity() {
                         tvCantRutinas.visibility = View.VISIBLE
                         nadaParaMostrar.visibility = View.GONE
 
+                        listaRutinas = rutinas
+
                         recyclerViewRutinas.apply {
                             layoutManager = LinearLayoutManager(this@rutinasDelAlumno)
-                            adapter = rutinasAdapter(rutinas)
+                            rutinasAdapter = rutinasAdapter(rutinas)
+                            recyclerRutinas.adapter = rutinasAdapter
                         }
                         tvCantidadRutinas.text = rutinas.size.toString()
                     }
@@ -94,4 +118,25 @@ class rutinasDelAlumno : AppCompatActivity() {
 
 
     }
+
+
+    private fun rutinaFiltrada(text: String?) {
+        var nuevaListaFiltrada = mutableListOf<RutinaModel>()
+        for (rutina in listaRutinas) {
+            if (rutina.nombre.lowercase().contains(text.toString().lowercase())) {
+                nuevaListaFiltrada.add(rutina)
+            }
+        }
+        if (nuevaListaFiltrada.isEmpty()){
+            recyclerRutinas.visibility = View.GONE
+            nadaParaMostrar.visibility = View.VISIBLE
+            nadaParaMostrar.text = "No se encontró ninguna rutina"
+        }
+        else {
+            nadaParaMostrar.visibility = View.GONE
+            recyclerRutinas.visibility = View.VISIBLE
+            rutinasAdapter.setListaFiltrada(nuevaListaFiltrada)
+        }
+    }
+
 }
