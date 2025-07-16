@@ -76,12 +76,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/input_fill"
+        android:foregroundGravity="center"
         android:foregroundTint="@color/celeste"
         android:foregroundTintMode="add"
         android:iconifiedByDefault="false"
         android:queryHint="Buscar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 

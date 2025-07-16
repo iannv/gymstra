@@ -187,7 +187,6 @@ class alumnos : AppCompatActivity() {
             sinRegistros.visibility = View.GONE
             recyclerAlumnos.visibility = View.VISIBLE
             alumnosAdapter.setListaFiltrada(nuevaListaFiltrada)
-
         }
     }
 }

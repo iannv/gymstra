@@ -3,14 +3,16 @@ package com.example.gymstra.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
 import com.example.gymstra.models.RutinaModel
 
-class rutinasAdapter(private val rutinas : List<RutinaModel>) : RecyclerView.Adapter<rutinasAdapter.ViewHolder>() {
+class rutinasAdapter(private var rutinas : List<RutinaModel>) : RecyclerView.Adapter<rutinasAdapter.ViewHolder>() {
 
     val gradientCards = arrayOf(
         R.drawable.gradient_azul_celeste,
@@ -37,9 +39,19 @@ class rutinasAdapter(private val rutinas : List<RutinaModel>) : RecyclerView.Ada
         val context = holder.itemView.context
         val fondo = ContextCompat.getDrawable(context, gradientCards[position % gradientCards.size])
         holder.gradientCard.background = fondo
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(context, "Rutina seleccionada: ${rutina.nombre}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
         return rutinas.size
+    }
+
+
+    fun setListaFiltrada(rutina: List<RutinaModel>) {
+        this.rutinas = rutina
+        notifyDataSetChanged()
     }
 }
