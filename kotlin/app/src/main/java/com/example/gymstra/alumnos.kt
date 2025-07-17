@@ -36,7 +36,7 @@ class alumnos : AppCompatActivity() {
 
     lateinit var listaAlumnos: List<AlumnoModel>
 
-    lateinit var filtro: ImageView
+    //lateinit var filtro: ImageView
     lateinit var buscador: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,7 +86,7 @@ class alumnos : AppCompatActivity() {
     // Cargar la lista de alumnos
     private fun cargarListaAlumnos() {
         val call = alumnoService.getAlumnos()
-        filtro = findViewById(R.id.filtro)
+        //filtro = findViewById(R.id.filtro)
 
         call.enqueue(object : retrofit2.Callback<List<AlumnoModel>> {
             override fun onResponse(
@@ -108,9 +108,9 @@ class alumnos : AppCompatActivity() {
                             recyclerAlumnos.adapter = alumnosAdapter
                         }
 
-                        filtro.setOnClickListener {
-                            Toast.makeText(this@alumnos, "Filtro", Toast.LENGTH_SHORT).show()
-                        }
+//                        filtro.setOnClickListener {
+//                            Toast.makeText(this@alumnos, "Filtro", Toast.LENGTH_SHORT).show()
+//                        }
                     }
                 }
                 else {
@@ -189,5 +189,6 @@ class alumnos : AppCompatActivity() {
             alumnosAdapter.setListaFiltrada(nuevaListaFiltrada)
         }
     }
+
 }
 
