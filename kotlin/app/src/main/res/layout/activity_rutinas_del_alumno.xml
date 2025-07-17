@@ -147,9 +147,10 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_weight="0"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
             android:gravity="center"
             android:text="Nada para mostrar"
-            android:textColor="@color/celeste"
+            android:textColor="@color/gris"
             android:textSize="18sp"
             android:visibility="gone" />
 
