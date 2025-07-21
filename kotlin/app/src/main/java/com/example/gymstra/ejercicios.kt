@@ -27,7 +27,20 @@ class ejercicios : AppCompatActivity() {
     lateinit var recyclerViewEjercicios: RecyclerView
     lateinit var ejerciciosAdapter: ejerciciosAdapter
     lateinit var listaEjercicios: List<EjercicioModel>
+    lateinit var filtrados: List<EjercicioModel>
     lateinit var nadaParaMostrarEjercicios: TextView
+
+    lateinit var abdominalesChip: Chip
+    lateinit var antebrazosChip: Chip
+    lateinit var bicepsChip: Chip
+    lateinit var cuadricepsChip: Chip
+    lateinit var espaldaChip: Chip
+    lateinit var gemelosChip: Chip
+    lateinit var gluteosChip: Chip
+    lateinit var hombrosChip: Chip
+    lateinit var isquiotibialesChip: Chip
+    lateinit var pechoChip: Chip
+    lateinit var tricepsChip: Chip
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +54,78 @@ class ejercicios : AppCompatActivity() {
 
         // Adaptador
         recyclerViewEjercicios = findViewById(R.id.recyclerViewEjercicios)
+        nadaParaMostrarEjercicios = findViewById(R.id.nadaParaMostrarEjercicios)
 
         val btnNuevoEjercicio = findViewById<Button>(R.id.btnNuevoEjercicio)
         val volver = findViewById<ImageView>(R.id.volverEjercicio)
+
+        abdominalesChip =  findViewById(R.id.chip1)
+        antebrazosChip = findViewById(R.id.chip2)
+        bicepsChip = findViewById(R.id.chip3)
+        cuadricepsChip = findViewById(R.id.chip4)
+        espaldaChip = findViewById(R.id.chip5)
+        gemelosChip = findViewById(R.id.chip6)
+        gluteosChip = findViewById(R.id.chip7)
+        hombrosChip = findViewById(R.id.chip8)
+        isquiotibialesChip = findViewById(R.id.chip9)
+        pechoChip = findViewById(R.id.chip10)
+        tricepsChip =  findViewById(R.id.chip11)
+
+        abdominalesChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 13 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        antebrazosChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 14 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        bicepsChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 15 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        cuadricepsChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 16 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        espaldaChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 17 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        gemelosChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 18 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        gluteosChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 19 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        hombrosChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 20 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        isquiotibialesChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 21 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        pechoChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 22 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
+        tricepsChip.setOnClickListener(){
+            filtrados = listaEjercicios.filter { it.id_zona_muscular == 23 }
+            ejerciciosAdapter.actualizarListaFiltrada(filtrados)
+        }
+
 
 
         volver.setOnClickListener {
@@ -60,7 +142,6 @@ class ejercicios : AppCompatActivity() {
         ejercicioService = ServiceBuilder.buildService(EjercicioService::class.java)
 
         cargarListaEjercicios()
-
     }
 
 
@@ -74,6 +155,7 @@ class ejercicios : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     listaEjercicios = response.body() ?: emptyList()
+
                     recyclerViewEjercicios.apply {
                         if (listaEjercicios.isEmpty()){
                             nadaParaMostrarEjercicios.visibility = View.VISIBLE
