@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
 import com.example.gymstra.models.EjercicioModel
 
-class ejerciciosAdapter(private val ejercicios: List<EjercicioModel>, private val eliminarEjercicioId: (Int, String) -> Unit) : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
+class ejerciciosAdapter(private var ejercicios: List<EjercicioModel>, private val eliminarEjercicioId: (Int, String) -> Unit) : RecyclerView.Adapter<ejerciciosAdapter.ViewHolder>() {
 
     val imgEditarEjercicio = arrayOf(R.drawable.editar_verde)
     val eliminarEjercicio = arrayOf(R.drawable.eliminar )
@@ -44,4 +44,10 @@ class ejerciciosAdapter(private val ejercicios: List<EjercicioModel>, private va
         return ejercicios.size
     }
 
+
+    // Actualizar la lista filtrada del chip seleccionado
+    fun actualizarListaFiltrada(nuevaLista: List<EjercicioModel>){
+        ejercicios = nuevaLista
+        notifyDataSetChanged()
+    }
 }
