@@ -6,6 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface EjercicioService {
@@ -18,6 +19,11 @@ interface EjercicioService {
     // Registrar ejercicio
     @POST("ejercicios/")
     fun addEjercicio(@Body ejercicio: EjercicioModel): Call<EjercicioModel>
+
+
+    // Actualizar ejercicio
+    @PUT("ejercicios/{id}/")
+    fun putEjercicio(@Path("id") id: Int, @Body ejercicio: EjercicioModel): Call<EjercicioModel>
 
 
     // Eliminar ejercicio

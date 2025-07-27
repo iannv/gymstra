@@ -162,7 +162,7 @@ class ejercicios : AppCompatActivity() {
                             recyclerViewEjercicios.visibility = View.GONE
                         } else{
                             layoutManager = LinearLayoutManager(this@ejercicios)
-                            ejerciciosAdapter = ejerciciosAdapter(listaEjercicios) { idEjercicio, nombreEjercicio ->
+                            ejerciciosAdapter = ejerciciosAdapter(listaEjercicios, this@ejercicios) { idEjercicio, nombreEjercicio ->
                                 confirmarEliminarEjercicio(idEjercicio, nombreEjercicio)
                             }
                             recyclerViewEjercicios.adapter = ejerciciosAdapter

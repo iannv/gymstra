@@ -16,6 +16,7 @@ import com.example.gymstra.services.EjercicioService
 import com.example.gymstra.services.ServiceBuilder
 import com.example.gymstra.services.ZonaMuscularService
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class nuevoEjercicio : AppCompatActivity() {
@@ -23,6 +24,7 @@ class nuevoEjercicio : AppCompatActivity() {
     lateinit var listaZonas: List<ZonaMuscularModel>
     lateinit var spinnerZonaMuscular: Spinner
     lateinit var ejercicioService: EjercicioService
+    lateinit var nombre: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +37,10 @@ class nuevoEjercicio : AppCompatActivity() {
             insets
         }
 
-        val nombre = findViewById<EditText>(R.id.etNombreE)
+        val accion = intent.getStringExtra("accion")
         val btnGuardar = findViewById<Button>(R.id.guardar)
         val btnCancelar = findViewById<Button>(R.id.cancelar)
+        nombre = findViewById(R.id.etNombreE)
         spinnerZonaMuscular = findViewById(R.id.spinnerZonaMuscular)
 
         nombre.requestFocus()
@@ -45,6 +48,7 @@ class nuevoEjercicio : AppCompatActivity() {
         // Llenar el spinner con datos reales
         val zonasMuscularesService = ServiceBuilder.buildService(ZonaMuscularService::class.java)
         val callZonasMusculares = zonasMuscularesService.getZonasMusculares()
+
 
         callZonasMusculares.enqueue(object : retrofit2.Callback<List<ZonaMuscularModel>> {
             override fun onResponse(
@@ -58,6 +62,18 @@ class nuevoEjercicio : AppCompatActivity() {
                     val adaptador = ArrayAdapter(this@nuevoEjercicio, R.layout.item_font_text, nombreZonas)
                     adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spinnerZonaMuscular.adapter = adaptador
+
+                    if (accion == "editar") {
+                        val nombreEjercicio = intent.getStringExtra("nombre")
+                        val zonaMuscular = intent.getIntExtra("id_zona_muscular", 0)
+                        nombre.setText(nombreEjercicio)
+
+                        val indexZona = listaZonas.indexOfFirst { it.id_zona_muscular == zonaMuscular }
+                        if (indexZona >= 0) {
+                            spinnerZonaMuscular.setSelection(indexZona)
+                        }
+                    }
+
                 } else {
                     Toast.makeText(this@nuevoEjercicio, "No se pudieron cargar zonas", Toast.LENGTH_SHORT).show()
                 }
@@ -70,7 +86,8 @@ class nuevoEjercicio : AppCompatActivity() {
         })
 
 
-        // Guardar ejercicio
+
+
         btnGuardar.setOnClickListener {
             val zonaSeleccionada = listaZonas.getOrNull(spinnerZonaMuscular.selectedItemPosition)
 
@@ -80,33 +97,57 @@ class nuevoEjercicio : AppCompatActivity() {
                     id_zona_muscular = zonaSeleccionada.id_zona_muscular
                 )
 
+
                 ejercicioService = ServiceBuilder.buildService(EjercicioService::class.java)
-                val callNuevoEjercicio = ejercicioService.addEjercicio(nuevoEjercicio)
 
-                callNuevoEjercicio.enqueue(object : retrofit2.Callback<EjercicioModel> {
-                    override fun onResponse(
-                        call: Call<EjercicioModel>,
-                        response: Response<EjercicioModel>
-                    ) {
-                        if (response.isSuccessful) {
-                            val intent = Intent(this@nuevoEjercicio, ejercicios::class.java)
-                            startActivity(intent)
-                            Toast.makeText(this@nuevoEjercicio, "Ejercicio agregado", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(this@nuevoEjercicio, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                // Verificar si es acción de edición o creación
+                if (accion == "editar") {
+                    val idEjercicio = intent.getIntExtra("id_ejercicio", 0)
+                    val callEditar = ejercicioService.putEjercicio(idEjercicio, nuevoEjercicio)
+
+                    callEditar.enqueue(object : Callback<EjercicioModel> {
+                        override fun onResponse(call: Call<EjercicioModel>, response: Response<EjercicioModel>) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(this@nuevoEjercicio, "Ejercicio editado", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this@nuevoEjercicio, ejercicios::class.java))
+                                finish()
+                            } else {
+                                Toast.makeText(this@nuevoEjercicio, "Error al editar: ${response.code()}", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                    }
 
-                    override fun onFailure(call: Call<EjercicioModel>, t: Throwable) {
-                        Toast.makeText(this@nuevoEjercicio, "Error al agregar el ejercicio", Toast.LENGTH_SHORT).show()
-                        Log.e("Retrofit", "ERROR: ${t.message}")
-                    }
-                })
+                        override fun onFailure(call: Call<EjercicioModel>, t: Throwable) {
+                            Log.e("Retrofit", "Error: ${t.message}")
+                            Toast.makeText(this@nuevoEjercicio, "Fallo al editar ejercicio", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+                } else {
+                    val callCrear = ejercicioService.addEjercicio(nuevoEjercicio)
+
+                    callCrear.enqueue(object : Callback<EjercicioModel> {
+                        override fun onResponse(call: Call<EjercicioModel>, response: Response<EjercicioModel>) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(this@nuevoEjercicio, "Ejercicio agregado", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this@nuevoEjercicio, ejercicios::class.java))
+                                finish()
+                            } else {
+                                Toast.makeText(this@nuevoEjercicio, "Error al agregar: ${response.code()}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<EjercicioModel>, t: Throwable) {
+                            Log.e("Retrofit", "Error: ${t.message}")
+                            Toast.makeText(this@nuevoEjercicio, "Fallo al agregar ejercicio", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                }
 
             } else {
                 Toast.makeText(this, "Seleccioná una zona válida", Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
         // Cancelar y volver
