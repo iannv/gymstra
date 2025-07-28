@@ -49,7 +49,6 @@ class nuevoEjercicio : AppCompatActivity() {
         val zonasMuscularesService = ServiceBuilder.buildService(ZonaMuscularService::class.java)
         val callZonasMusculares = zonasMuscularesService.getZonasMusculares()
 
-
         callZonasMusculares.enqueue(object : retrofit2.Callback<List<ZonaMuscularModel>> {
             override fun onResponse(
                 call: Call<List<ZonaMuscularModel>>,

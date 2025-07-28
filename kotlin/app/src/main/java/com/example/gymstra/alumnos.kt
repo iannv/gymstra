@@ -102,7 +102,7 @@ class alumnos : AppCompatActivity() {
                         }
                         else{
                             layoutManager = LinearLayoutManager(this@alumnos)
-                            alumnosAdapter = alumnosAdapter(listaAlumnos) { idAlumno, nombreAlumno ->
+                            alumnosAdapter = alumnosAdapter(listaAlumnos, this@alumnos) { idAlumno, nombreAlumno ->
                                 confirmarEliminarAlumno(idAlumno, nombreAlumno)
                             }
                             recyclerAlumnos.adapter = alumnosAdapter

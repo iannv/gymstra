@@ -113,7 +113,7 @@
                 android:layout_width="22dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fecha de ingreso"
+                android:text="Fecha de ingreso:"
                 android:textColor="@color/gris"
                 android:textSize="14sp" />
 
@@ -121,8 +121,11 @@
                 android:id="@+id/tvIngresoA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:foregroundGravity="left"
+                android:gravity="start"
                 android:text="TextView"
                 android:textColor="@color/celeste"
                 android:textSize="14sp" />
@@ -139,7 +142,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nombre completo"
+                android:text="Nombre completo:"
                 android:textColor="@color/gris"
                 android:textSize="14sp" />
 
@@ -147,9 +150,12 @@
                 android:id="@+id/tvNombreCompletoA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/editar"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:foregroundGravity="left"
+                android:gravity="start"
                 android:text="TextView"
                 android:textColor="@color/celeste"
                 android:textSize="14sp" />
@@ -166,7 +172,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DNI"
+                android:text="DNI:"
                 android:textColor="@color/gris"
                 android:textSize="14sp" />
 
@@ -174,9 +180,12 @@
                 android:id="@+id/tvDniA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/editar"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:foregroundGravity="left"
+                android:gravity="start"
                 android:text="TextView"
                 android:textColor="@color/celeste"
                 android:textSize="14sp" />
@@ -193,7 +202,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Teléfono"
+                android:text="Teléfono:"
                 android:textColor="@color/gris"
                 android:textSize="14sp" />
 
@@ -201,36 +210,12 @@
                 android:id="@+id/tvTelA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/editar"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
-                android:text="TextView"
-                android:textColor="@color/celeste"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvDomicilio"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Domicilio"
-                android:textColor="@color/gris"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvDomicilioA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableEnd="@drawable/editar"
-                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:foregroundGravity="left"
+                android:gravity="start"
                 android:text="TextView"
                 android:textColor="@color/celeste"
                 android:textSize="14sp" />
@@ -247,7 +232,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Veces por semana"
+                android:text="Veces por semana:"
                 android:textColor="@color/gris"
                 android:textSize="14sp" />
 
@@ -255,9 +240,12 @@
                 android:id="@+id/tvVecesPorSemanaA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/editar"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:foregroundGravity="left"
+                android:gravity="start"
                 android:text="TextView"
                 android:textColor="@color/celeste"
                 android:textSize="14sp" />
@@ -267,14 +255,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tvEstado"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Estado"
+                android:text="Estado:"
                 android:textColor="@color/gris"
                 android:textSize="14sp" />
 
