@@ -1,18 +1,21 @@
 package com.example.gymstra.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
-import com.example.gymstra.alumnos
+import com.example.gymstra.datosDelAlumno
 import com.example.gymstra.models.AlumnoModel
 
-class alumnosAdapter(private var alumnos: List<AlumnoModel>, private val eliminarAlumnoId: (Int, String) -> Unit) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>() {
+class alumnosAdapter(
+    private var alumnos: List<AlumnoModel>,
+    var context: Context,
+    private val eliminarAlumnoId: (Int, String) -> Unit) : RecyclerView.Adapter<alumnosAdapter.ViewHolder>() {
 
     val imgVerRutina = arrayOf("Ver rutina")
 
@@ -41,6 +44,12 @@ class alumnosAdapter(private var alumnos: List<AlumnoModel>, private val elimina
                 val nombreCompleto = "${alumno.nombre} ${alumno.apellido}"
                 eliminarAlumnoId(id, nombreCompleto)
             }
+        }
+
+        holder.tvItemAlumno.setOnClickListener {
+            val intent = Intent(holder.itemView.context, datosDelAlumno::class.java)
+            intent.putExtra("idAlumno", alumno.id_alumno)
+            context.startActivity(intent)
         }
     }
 
