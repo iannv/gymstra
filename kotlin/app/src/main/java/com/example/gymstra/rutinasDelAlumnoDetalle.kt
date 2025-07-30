@@ -1,8 +1,10 @@
 package com.example.gymstra
 
 import android.app.Service
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -28,6 +30,7 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
     lateinit var tvNombreRutinaA: TextView
     lateinit var tvFechaRutinaA: TextView
     lateinit var imgPdf: ImageView
+    lateinit var cancelar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +42,27 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
             insets
         }
 
+        val volver = findViewById<ImageView>(R.id.imgCerrarSesion6)
         recyclerRutinas = findViewById(R.id.recyclerViewRutinasAlumno)
         tvNombreAlumnoA = findViewById(R.id.tvNombreAlumnoA)
         tvNombreRutinaA = findViewById(R.id.tvNombreRutinaA)
         tvFechaRutinaA = findViewById(R.id.tvFechaRutinaA)
         imgPdf = findViewById(R.id.imgPdf)
+        cancelar = findViewById(R.id.btnCancelar)
 
         obtenerRutinas()
+
+        tvNombreRutinaA.setText(intent.getStringExtra("nombreRutina"))
+
+        cancelar.setOnClickListener(){
+            val intent = Intent(this, rutinasDelAlumno::class.java)
+            startActivity(intent)
+        }
+
+        volver.setOnClickListener(){
+            val intent = Intent(this, rutinasDelAlumno::class.java)
+            startActivity(intent)
+        }
 
     }
 
