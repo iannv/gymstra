@@ -45,6 +45,7 @@ class rutinasAdapter(private var rutinas : List<RutinaModel>) : RecyclerView.Ada
         holder.itemView.setOnClickListener {
             Toast.makeText(context, "Rutina seleccionada: ${rutina.nombre}", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, rutinasDelAlumnoDetalle::class.java)
+            intent.putExtra("nombreRutina", rutina.nombre)
             context.startActivity(intent)
         }
     }
