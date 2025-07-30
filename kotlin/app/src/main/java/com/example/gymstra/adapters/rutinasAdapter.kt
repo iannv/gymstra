@@ -1,5 +1,6 @@
 package com.example.gymstra.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
 import com.example.gymstra.models.RutinaModel
+import com.example.gymstra.rutinasDelAlumnoDetalle
 
 class rutinasAdapter(private var rutinas : List<RutinaModel>) : RecyclerView.Adapter<rutinasAdapter.ViewHolder>() {
 
@@ -42,6 +44,8 @@ class rutinasAdapter(private var rutinas : List<RutinaModel>) : RecyclerView.Ada
 
         holder.itemView.setOnClickListener {
             Toast.makeText(context, "Rutina seleccionada: ${rutina.nombre}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, rutinasDelAlumnoDetalle::class.java)
+            context.startActivity(intent)
         }
     }
 
