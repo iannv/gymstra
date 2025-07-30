@@ -65,7 +65,7 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
                     recyclerRutinas.apply{
                         layoutManager = LinearLayoutManager(this@rutinasDelAlumnoDetalle)
                         adapter = rutinaExpandableAdapter(rutinas)
-                        // TODO:
+                        // TODO:..
                     }
                 }
                 else{
