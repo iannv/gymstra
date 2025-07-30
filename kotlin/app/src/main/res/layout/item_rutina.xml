@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/border_card"
+            android:contentDescription="Item ejercicio"
             android:orientation="vertical"
             android:paddingTop="15dp">
 
@@ -75,116 +76,19 @@
                 android:textColor="@color/celeste"
                 android:textSize="12sp" />
 
+            <!-- Contenedor donde se agregarán dinámicamente los ejercicios -->
             <LinearLayout
-                android:id="@+id/expandableLayoutRutina"
+                android:id="@+id/contenedorEjercicios"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="0.6dp"
-                    android:layout_marginBottom="5dp"
-                    app:dividerColor="@color/gris"
-                    app:dividerInsetEnd="10dp"
-                    app:dividerInsetStart="10dp" />
+                android:paddingLeft="1dp"
+                android:paddingTop="8dp"
+                android:paddingRight="1dp"
+                android:paddingBottom="5dp"/>
+            <!-- Series y reps deben aparecer aca -->
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvSeries"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="45dp"
-                        android:layout_weight="0"
-                        android:text="Series"
-                        android:textColor="@color/gris"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tvReps"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="30dp"
-                        android:layout_weight="0"
-                        android:text="Reps."
-                        android:textColor="@color/gris"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spinner2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:minWidth="320dp" />
-
-                    <TableLayout
-                        android:id="@+id/tableLayoutRutina"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TableRow
-                            android:id="@+id/tableRowRutina"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <EditText
-                                android:id="@+id/etSeries"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="0"
-                                android:fontFamily="@font/plus_jakarta_sans_light"
-                                android:gravity="center"
-                                android:hint="-"
-                                android:inputType="number"
-                                android:maxWidth="48dp"
-                                android:minWidth="48dp"
-                                android:text="4"
-                                android:textColor="@color/celeste"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:id="@+id/tvX"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/plus_jakarta_sans_light"
-                                android:text="x"
-                                android:textColor="@color/celeste" />
-
-                            <EditText
-                                android:id="@+id/etReps"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
-                                android:fontFamily="@font/plus_jakarta_sans_light"
-                                android:gravity="center"
-                                android:hint="-"
-                                android:inputType="textMultiLine"
-                                android:minHeight="48dp"
-                                android:text="15/12/10/10"
-                                android:textColor="@color/celeste"
-                                android:textSize="15sp" />
-
-                        </TableRow>
-
-                    </TableLayout>
-                </LinearLayout>
-            </LinearLayout>
 
         </LinearLayout>
 

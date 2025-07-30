@@ -1,5 +1,6 @@
 package com.example.gymstra.adapters
 
+import android.content.Context
 import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
+import com.example.gymstra.models.EjercicioModel
 import com.example.gymstra.models.RutinaModel
 
 class rutinaExpandableAdapter(private val rutinas: List<RutinaModel> ): RecyclerView.Adapter<rutinaExpandableAdapter.ViewHolder>(){
@@ -26,6 +28,7 @@ class rutinaExpandableAdapter(private val rutinas: List<RutinaModel> ): Recycler
         val spinner = view.findViewById<Spinner>(R.id.spinner2)
         val etSeries = view.findViewById<EditText>(R.id.etSeries)
         val etReps = view.findViewById<EditText>(R.id.etReps)
+        val contenedorEjercicios = view.findViewById<LinearLayout>(R.id.contenedorEjercicios)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,9 +42,18 @@ class rutinaExpandableAdapter(private val rutinas: List<RutinaModel> ): Recycler
 
         // TODO: Agregar animacion al expandible
         holder.expandirLista.setOnClickListener {
-            if (holder.expandableLayoutRutina.visibility == View.GONE) { holder.expandableLayoutRutina.visibility = View.VISIBLE }
-            else { holder.expandableLayoutRutina.visibility = View.GONE }
+            if (holder.contenedorEjercicios.visibility == View.VISIBLE) { holder.contenedorEjercicios.visibility = View.GONE }
+            else { holder.contenedorEjercicios.visibility = View.VISIBLE }
         }
+
+        // TODO: Hacer guardado automatico para que el recyclerview no reinicie y se pierda los cambios al hacer scroll
+        holder.tvAgregarEjercicio.setOnClickListener {
+            val inflater = LayoutInflater.from(holder.itemView.context)
+            val nuevaVista = inflater.inflate(R.layout.item_rutina_ejercicio, holder.contenedorEjercicios, false)
+            holder.contenedorEjercicios.addView(nuevaVista)
+        }
+
+
 
     }
 
