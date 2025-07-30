@@ -1,6 +1,9 @@
 package com.example.gymstra
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +19,24 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val btnIniciarSesion = findViewById<Button>(R.id.btnIniciarSesion)
+        val btnRegistrarme = findViewById<Button>(R.id.btnRegistrarme)
+        val etEmail = findViewById<EditText>(R.id.etEmail)
+        val etClave = findViewById<EditText>(R.id.etClave)
+
+        etEmail.requestFocus()
+
+        btnIniciarSesion.setOnClickListener {
+            val intent = Intent(this, inicio::class.java)
+            startActivity(intent)
+        }
+
+        btnRegistrarme.setOnClickListener {
+            val intent = Intent(this, registrarse::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azulOscuro"
+    tools:context=".ejercicios">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@color/azulClaro"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/volverEjercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/volver" />
+
+    <TextView
+        android:id="@+id/toolbarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Ejercicios"
+        android:textColor="@color/celeste"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toEndOf="@+id/volverEjercicio"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <TextView
+        android:id="@+id/tvNombreAdmin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Nombre"
+        android:textColor="@color/celeste"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toStartOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476" />
+
+    <ImageView
+        android:id="@+id/menu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:srcCompat="@drawable/menu" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Abdominales"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Antebrazos"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Bíceps"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Cuádriceps"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Espalda"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Gemelos"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Glúteos"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Hombros"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Isquiotibiales"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Pecho"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Tríceps"
+                    android:textColor="@color/color_chips"
+                    android:textSize="14sp"
+                    app:chipStrokeColor="@color/color_chips" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/btnNuevoEjercicio"
+        android:layout_width="175dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:height="48dp"
+        android:drawableLeft="@drawable/agregar"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Nuevo ejercicio"
+        android:textSize="12sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <TextView
+        android:id="@+id/nadaParaMostrarEjercicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="No hay alumnos registrados"
+        android:textColor="@color/gris"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewEjercicios" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEjercicios"
+        android:layout_width="410dp"
+        android:layout_height="494dp"
+        android:layout_marginEnd="2dp"
+        android:contentDescription="Ejercicios"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNuevoEjercicio"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
