@@ -44,8 +44,9 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
         tvNombreRutinaA = findViewById(R.id.tvNombreRutinaA)
         tvFechaRutinaA = findViewById(R.id.tvFechaRutinaA)
         imgPdf = findViewById(R.id.imgPdf)
-        
+
         obtenerRutinas()
+
     }
 
 
@@ -64,6 +65,7 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
                     recyclerRutinas.apply{
                         layoutManager = LinearLayoutManager(this@rutinasDelAlumnoDetalle)
                         adapter = rutinaExpandableAdapter(rutinas)
+                        // TODO:....
                     }
                 }
                 else{
