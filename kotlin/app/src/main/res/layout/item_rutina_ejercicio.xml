@@ -81,12 +81,12 @@
                         android:layout_weight="0"
                         android:fontFamily="@font/plus_jakarta_sans_light"
                         android:gravity="center"
-                        android:hint="-"
+                        android:hint="0"
                         android:inputType="number"
                         android:maxWidth="48dp"
                         android:minWidth="48dp"
-                        android:text="4"
                         android:textColor="@color/celeste"
+                        android:textColorHint="@color/gris"
                         android:textSize="14sp" />
 
                     <TextView
@@ -105,11 +105,11 @@
                         android:ems="10"
                         android:fontFamily="@font/plus_jakarta_sans_light"
                         android:gravity="center"
-                        android:hint="-"
+                        android:hint="0"
                         android:inputType="textMultiLine"
                         android:minHeight="48dp"
-                        android:text="15/12/10/10"
                         android:textColor="@color/celeste"
+                        android:textColorHint="@color/gris"
                         android:textSize="15sp" />
 
                 </TableRow>

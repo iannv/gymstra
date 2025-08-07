@@ -31,6 +31,7 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
     lateinit var tvFechaRutinaA: TextView
     lateinit var imgPdf: ImageView
     lateinit var cancelar: Button
+    lateinit var guardar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +44,14 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
         }
 
         val volver = findViewById<ImageView>(R.id.imgCerrarSesion6)
+        rutinaService = ServiceBuilder.buildService(RutinaService::class.java)
         recyclerRutinas = findViewById(R.id.recyclerViewRutinasAlumno)
         tvNombreAlumnoA = findViewById(R.id.tvNombreAlumnoA)
         tvNombreRutinaA = findViewById(R.id.tvNombreRutinaA)
         tvFechaRutinaA = findViewById(R.id.tvFechaRutinaA)
         imgPdf = findViewById(R.id.imgPdf)
         cancelar = findViewById(R.id.btnCancelar)
+        guardar = findViewById(R.id.guardar)
 
         obtenerRutinas()
 
@@ -64,12 +67,15 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
             startActivity(intent)
         }
 
+        guardar.setOnClickListener(){
+            val nuevaRutina = RutinaModel()
+        }
+
     }
 
 
     // Obtener todas las rutinas
     private fun obtenerRutinas(){
-        rutinaService = ServiceBuilder.buildService(RutinaService::class.java)
         val call = rutinaService.getRutinas()
 
         call.enqueue(object : retrofit2.Callback<List<RutinaModel>> {
@@ -82,7 +88,6 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
                     recyclerRutinas.apply{
                         layoutManager = LinearLayoutManager(this@rutinasDelAlumnoDetalle)
                         adapter = rutinaExpandableAdapter(rutinas)
-                        // TODO:....
                     }
                 }
                 else{
@@ -97,4 +102,21 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
         })
     }
 
+
+
+    // Crear una rutina
+    private fun crearRutina() {
+        val call = rutinaService.addRutina(nuevaRutina)
+
+        call.enqueue(object : retrofit2.Callback<RutinaModel> {
+            override fun onResponse(call: Call<RutinaModel>, response: Response<RutinaModel>) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onFailure(call: Call<RutinaModel>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+
+    }
 }

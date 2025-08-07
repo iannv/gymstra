@@ -25,9 +25,6 @@ class rutinaExpandableAdapter(private val rutinas: List<RutinaModel> ): Recycler
         val expandirLista = view.findViewById<ImageView>(R.id.expandirLista)
         val tvZonasMusculares = view.findViewById<TextView>(R.id.tvZonasMusculares)
         val expandableLayoutRutina = view.findViewById<LinearLayout>(R.id.expandableLayoutRutina)
-        val spinner = view.findViewById<Spinner>(R.id.spinner2)
-        val etSeries = view.findViewById<EditText>(R.id.etSeries)
-        val etReps = view.findViewById<EditText>(R.id.etReps)
         val contenedorEjercicios = view.findViewById<LinearLayout>(R.id.contenedorEjercicios)
     }
 
@@ -50,6 +47,14 @@ class rutinaExpandableAdapter(private val rutinas: List<RutinaModel> ): Recycler
         holder.tvAgregarEjercicio.setOnClickListener {
             val inflater = LayoutInflater.from(holder.itemView.context)
             val nuevaVista = inflater.inflate(R.layout.item_rutina_ejercicio, holder.contenedorEjercicios, false)
+
+            val spinner = nuevaVista.findViewById<Spinner>(R.id.spinner2)
+            val etSeries = nuevaVista.findViewById<EditText>(R.id.etReps)
+            val etReps = nuevaVista.findViewById<EditText>(R.id.etReps)
+
+            etReps.setText("15 12 10 10 8")
+
+
             holder.contenedorEjercicios.addView(nuevaVista)
         }
 
