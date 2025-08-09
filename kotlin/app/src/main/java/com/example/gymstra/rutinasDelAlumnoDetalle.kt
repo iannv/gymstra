@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.gymstra.adapters.rutinaExpandableAdapter
 import com.example.gymstra.models.RutinaModel
+import com.example.gymstra.models.nuevaRutinaModel
 import com.example.gymstra.services.RutinaService
 import com.example.gymstra.services.ServiceBuilder
 import retrofit2.Call
@@ -68,7 +69,11 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
         }
 
         guardar.setOnClickListener(){
-            val nuevaRutina = RutinaModel()
+            val nuevaRutina = nuevaRutinaModel(
+                series = series
+                repeticiones = repeticiones ,
+                ejercicio = ejercicio,
+            )
         }
 
     }
