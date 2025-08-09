@@ -132,9 +132,7 @@ class Ejercicio(models.Model):
 class Rutina(models.Model):
     id_rutina = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
     nombre = models.CharField(max_length=100)
-    series = models.IntegerField()  
-    repeticiones = models.IntegerField()
-    ejercicio = models.ManyToManyField('Ejercicio')
+    ejercicios = models.ManyToManyField('Ejercicio', through='RutinaEjercicio')
     
     class Meta:
         db_table = 'Rutinas'
@@ -143,3 +141,19 @@ class Rutina(models.Model):
     
     def __str__(self):
         return self.nombre
+    
+    
+class RutinaEjercicio(models.Model):
+    id_rutina_ejercicio = models.AutoField(primary_key=True, unique=True, blank=False, null=False)
+    rutina = models.ForeignKey(Rutina, on_delete=models.CASCADE)
+    ejercicio = models.ForeignKey(Ejercicio, on_delete=models.CASCADE)
+    series = models.IntegerField(default=1)  
+    repeticiones = models.IntegerField()
+    
+    class Meta:
+        db_table = 'Rutina Ejercicio'
+        verbose_name = 'Rutina Ejercicio'
+        verbose_name_plural = 'Rutinas Ejercicios'
+    
+    def __str__(self):
+        return 
