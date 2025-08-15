@@ -59,3 +59,17 @@ class RutinaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rutina
         fields = '__all__'
+        
+        
+# RUTINA EJERCICIO
+class RutinaEjercicioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RutinaEjercicio
+        fields = '__all__'
+        
+        
+# REPETICIONES
+# class RepeticionSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Repeticion
+#         fields = '__all__'

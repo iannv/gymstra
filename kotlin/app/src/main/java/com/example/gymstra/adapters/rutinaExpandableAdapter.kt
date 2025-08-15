@@ -1,105 +1,106 @@
 package com.example.gymstra.adapters
 
-import android.content.Context
-import android.media.Image
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
+import android.widget.*
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymstra.R
 import com.example.gymstra.models.EjercicioModel
+import com.example.gymstra.models.RutinaEjercicioModel
 import com.example.gymstra.models.RutinaModel
 
-class rutinaExpandableAdapter(private val rutinas: MutableList<RutinaModel> ): RecyclerView.Adapter<rutinaExpandableAdapter.ViewHolder>(){
+class rutinaExpandableAdapter(
+    private val rutinas: MutableList<RutinaModel>,
+    private val listaEjercicios: List<EjercicioModel> // todos los ejercicios posibles
+) : RecyclerView.Adapter<RutinaExpandableAdapter.ViewHolder>() {
 
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        val cardItemEjercicio = view.findViewById<CardView>(R.id.cardItemEjercicio)
-        val spinnerDia = view.findViewById<Spinner>(R.id.spinnerDia)
-        val tvAgregarEjercicio = view.findViewById<TextView>(R.id.tvAgregarEjercicio)
-        val expandirLista = view.findViewById<ImageView>(R.id.expandirLista)
-        val tvZonasMusculares = view.findViewById<TextView>(R.id.tvZonasMusculares)
-        val expandableLayoutRutina = view.findViewById<LinearLayout>(R.id.expandableLayoutRutina)
-        val contenedorEjercicios = view.findViewById<LinearLayout>(R.id.contenedorEjercicios)
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val expandirLista: ImageView = view.findViewById(R.id.expandirLista)
+        val contenedorEjercicios: LinearLayout = view.findViewById(R.id.contenedorEjercicios)
+        val tvAgregarEjercicio: TextView = view.findViewById(R.id.tvAgregarEjercicio)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val rutina = LayoutInflater.from(parent.context).inflate(R.layout.item_rutina, parent, false)
-        return ViewHolder(rutina)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rutina, parent, false))
 
+    override fun getItemCount() = rutinas.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val rutina = rutinas[position]
 
-        // TODO: Agregar animacion al expandible
+        // Expandible
         holder.expandirLista.setOnClickListener {
-            if (holder.contenedorEjercicios.visibility == View.VISIBLE) { holder.contenedorEjercicios.visibility = View.GONE }
-            else { holder.contenedorEjercicios.visibility = View.VISIBLE }
+            holder.contenedorEjercicios.visibility =
+                if (holder.contenedorEjercicios.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
 
-        // TODO: Hacer guardado automatico para que el recyclerview no reinicie y se pierda los cambios al hacer scroll
-        // Item_rutina_ejercicio
+        // Limpiar antes de inflar ejercicios
+        holder.contenedorEjercicios.removeAllViews()
+
+        // Inflar ejercicios existentes
+        rutina.ejercicios.forEach { ejercicio ->
+            agregarEjercicioView(holder, rutina, ejercicio)
+        }
+
+        // Agregar nuevo ejercicio dinámicamente
         holder.tvAgregarEjercicio.setOnClickListener {
-            val inflater = LayoutInflater.from(holder.itemView.context)
-            val nuevaVista = inflater.inflate(R.layout.item_rutina_ejercicio, holder.contenedorEjercicios, false)
+            val nuevoEjercicio = RutinaEjercicioModel(
+                id_rutina_ejercicio = null,
+                ejercicio = null,
+                series = 0,
+                repeticiones = mutableListOf()
+            )
+            rutina.ejercicios.add(nuevoEjercicio)
+            agregarEjercicioView(holder, rutina, nuevoEjercicio)
+        }
+    }
 
-            val spinnerEjercicios = nuevaVista.findViewById<Spinner>(R.id.spinnerEjercicios)
-            val etSeries = nuevaVista.findViewById<EditText>(R.id.etSeries)
-            val etReps = nuevaVista.findViewById<EditText>(R.id.etReps)
+    private fun agregarEjercicioView(
+        holder: ViewHolder,
+        rutina: RutinaModel,
+        ejercicio: RutinaEjercicioModel
+    ) {
+        val inflater = LayoutInflater.from(holder.itemView.context)
+        val itemView = inflater.inflate(R.layout.item_rutina_ejercicio, holder.contenedorEjercicios, false)
 
-            spinnerEjercicios.setSelection(0)
-            etReps.setText(rutina.repeticiones)
-            etSeries.setText(rutina.series)
+        val etSeries: EditText = itemView.findViewById(R.id.etSeries)
+        val etReps: EditText = itemView.findViewById(R.id.etReps)
+        val spinnerEjercicios: Spinner = itemView.findViewById(R.id.spinnerEjercicios)
 
-            rutina.ejercicio = rutina.ejercicio ?: mutableListOf()
-            spinnerEjercicios.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    if (!rutina.ejercicio.contains(position)) {
-                        rutina.ejercicio.add(position)
-                    }
-                }
+        // Setear valores iniciales
+        etSeries.setText(if (ejercicio.series > 0) ejercicio.series.toString() else "")
+        etReps.setText(ejercicio.repeticiones.joinToString("/"))
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    Toast.makeText(holder.itemView.context, "Ningún ejercicio seleccionado", Toast.LENGTH_SHORT).show()
-                }
-
-            })
-
-            etReps.doAfterTextChanged { editable ->
-                rutina.repeticiones = editable?.toString()?.toIntOrNull() ?: 0
-            }
-
-            etSeries.doAfterTextChanged { editable ->
-                rutina.series = editable?.toString()?.toIntOrNull() ?: 0
-            }
-
-            holder.contenedorEjercicios.addView(nuevaVista)
+        // Guardar cambios dinámicamente
+        etSeries.doAfterTextChanged { text ->
+            ejercicio.series = text.toString().toIntOrNull() ?: 0
+        }
+        etReps.doAfterTextChanged { text ->
+            ejercicio.repeticiones = text.toString().split("/").mapNotNull { it.toIntOrNull() }.toMutableList()
         }
 
+        // Spinner con ejercicios disponibles
+        val nombresEjercicios = listaEjercicios.map { it.nombre }
+        val adapter = ArrayAdapter(holder.itemView.context, android.R.layout.simple_spinner_item, nombresEjercicios)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerEjercicios.adapter = adapter
 
+        // Selección inicial
+        ejercicio.ejercicio?.let { ex ->
+            val index = listaEjercicios.indexOfFirst { it.id_ejercicio == ex.id_ejercicio }
+            if (index >= 0) spinnerEjercicios.setSelection(index)
+        }
 
+        spinnerEjercicios.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                ejercicio.ejercicio = listaEjercicios.getOrNull(position)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        // Agregar a contenedor
+        holder.contenedorEjercicios.addView(itemView)
     }
-
-
-    override fun getItemCount(): Int {
-        return rutinas.size
-    }
-
 }

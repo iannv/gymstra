@@ -85,3 +85,19 @@ class RutinaView(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
     permission_classes = [permissions.AllowAny]
     queryset = Rutina.objects.all()
+
+
+# RUTINA EJERCICIO
+class RutinaEjercicioView(viewsets.ModelViewSet):
+    serializer_class = RutinaEjercicioSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
+    queryset = RutinaEjercicio.objects.all()
+
+
+# REPETICIONES
+# class RepeticionesView(viewsets.ModelViewSet):
+#     serializer_class = RepeticionSerializer
+#     # permission_classes = [permissions.IsAuthenticated]
+#     permission_classes = [permissions.AllowAny]
+#     queryset = Repeticion.objects.all()

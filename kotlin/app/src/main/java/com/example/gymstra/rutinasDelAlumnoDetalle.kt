@@ -1,6 +1,5 @@
 package com.example.gymstra
 
-import android.app.Service
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,18 +13,20 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.gymstra.adapters.rutinaExpandableAdapter
+import com.example.gymstra.models.EjercicioModel
+import com.example.gymstra.models.RutinaEjercicioModel
 import com.example.gymstra.models.RutinaModel
-import com.example.gymstra.models.nuevaRutinaModel
 import com.example.gymstra.services.RutinaService
 import com.example.gymstra.services.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Response
 
 class rutinasDelAlumnoDetalle : AppCompatActivity() {
+
     lateinit var rutinaService: RutinaService
     lateinit var recyclerRutinas: RecyclerView
+    lateinit var listaEjercicios: List<EjercicioModel>
 
     lateinit var tvNombreAlumnoA: TextView
     lateinit var tvNombreRutinaA: TextView
@@ -44,8 +45,8 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
             insets
         }
 
+        // Inicialización de views
         val volver = findViewById<ImageView>(R.id.imgCerrarSesion6)
-        rutinaService = ServiceBuilder.buildService(RutinaService::class.java)
         recyclerRutinas = findViewById(R.id.recyclerViewRutinasAlumno)
         tvNombreAlumnoA = findViewById(R.id.tvNombreAlumnoA)
         tvNombreRutinaA = findViewById(R.id.tvNombreRutinaA)
@@ -54,74 +55,70 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
         cancelar = findViewById(R.id.btnCancelar)
         guardar = findViewById(R.id.guardar)
 
+        rutinaService = ServiceBuilder.buildService(RutinaService::class.java)
+
+        // Inicializamos lista de ejercicios (puede venir de API en lugar de estático)
+        listaEjercicios = listOf(
+            EjercicioModel(1, "Remo a un brazo", 17),
+            EjercicioModel(2, "Maquina de remo", 5),
+            EjercicioModel(3, "Remo inclinado", 17)
+        )
+
+        // Mostrar nombre de la rutina
+        tvNombreRutinaA.text = intent.getStringExtra("nombreRutina") ?: ""
+
+        // Botones
+        cancelar.setOnClickListener {
+            startActivity(Intent(this, rutinasDelAlumno::class.java))
+        }
+        volver.setOnClickListener {
+            startActivity(Intent(this, rutinasDelAlumno::class.java))
+        }
+
+        // Obtener rutinas y cargar RecyclerView
         obtenerRutinas()
-
-        tvNombreRutinaA.setText(intent.getStringExtra("nombreRutina"))
-
-        cancelar.setOnClickListener(){
-            val intent = Intent(this, rutinasDelAlumno::class.java)
-            startActivity(intent)
-        }
-
-        volver.setOnClickListener(){
-            val intent = Intent(this, rutinasDelAlumno::class.java)
-            startActivity(intent)
-        }
-
-        guardar.setOnClickListener(){
-            val nuevaRutina = nuevaRutinaModel(
-                series = series
-                repeticiones = repeticiones ,
-                ejercicio = ejercicio,
-            )
-        }
-
     }
 
-
-    // Obtener todas las rutinas
-    private fun obtenerRutinas(){
+    private fun obtenerRutinas() {
         val call = rutinaService.getRutinas()
-
         call.enqueue(object : retrofit2.Callback<List<RutinaModel>> {
             override fun onResponse(
                 call: Call<List<RutinaModel>>,
                 response: Response<List<RutinaModel>>
             ) {
-                if (response.isSuccessful){
-                    val rutinas = response.body() ?: emptyList()
-                    recyclerRutinas.apply{
+                if (response.isSuccessful) {
+                    val rutinas = response.body()?.map { rutina ->
+                        // Convertimos la lista de IDs a objetos RutinaEjercicioModel
+                        val ejerciciosModel = rutina.ejercicios.mapNotNull { idEj ->
+                            listaEjercicios.find { it.id_ejercicio == idEj }?.let {
+                                RutinaEjercicioModel(ejercicio = it)
+                            }
+                        }.toMutableList()
+                        rutina.copy(ejercicios = ejerciciosModel)
+                    }?.toMutableList() ?: mutableListOf()
+
+                    recyclerRutinas.apply {
                         layoutManager = LinearLayoutManager(this@rutinasDelAlumnoDetalle)
-                        adapter = rutinaExpandableAdapter(rutinas)
+                        adapter = rutinaExpandableAdapter(rutinas, listaEjercicios)
                     }
-                }
-                else{
-                    Toast.makeText(this@rutinasDelAlumnoDetalle, "Error al obtener las rutinas", Toast.LENGTH_SHORT).show()
+
+                } else {
+                    Toast.makeText(
+                        this@rutinasDelAlumnoDetalle,
+                        "Error al obtener las rutinas",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
             override fun onFailure(call: Call<List<RutinaModel>>, t: Throwable) {
-                Toast.makeText(this@rutinasDelAlumnoDetalle, "Error al obtener el listado de rutinas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@rutinasDelAlumnoDetalle,
+                    "Error al obtener el listado de rutinas",
+                    Toast.LENGTH_SHORT
+                ).show()
                 Log.e("Error", t.message.toString())
             }
         })
-    }
-
-
-
-    // Crear una rutina
-    private fun crearRutina() {
-        val call = rutinaService.addRutina(nuevaRutina)
-
-        call.enqueue(object : retrofit2.Callback<RutinaModel> {
-            override fun onResponse(call: Call<RutinaModel>, response: Response<RutinaModel>) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onFailure(call: Call<RutinaModel>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
-
     }
 }
