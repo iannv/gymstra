@@ -51,11 +51,28 @@ class ZonaMuscularSerializer(serializers.ModelSerializer):
 class EjercicioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ejercicio
-        fields = '__all__'
+        fields = ['id_ejercicio', 'nombre', 'id_zona_muscular']
+
+
+# RUTINA EJERCICIO
+class RutinaEjercicioSerializer(serializers.ModelSerializer):
+    ejercicio = EjercicioSerializer(read_only=True)
+    
+    class Meta:
+        model = RutinaEjercicio
+        fields = ['id_rutina_ejercicio', 'ejercicio', 'series', 'repeticiones']
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        if isinstance(rep['repeticiones'], int):
+            rep['repeticiones'] = [rep['repeticiones']]
+        return rep
 
 
 # RUTINA
 class RutinaSerializer(serializers.ModelSerializer):
+    ejercicios = RutinaEjercicioSerializer(source='rutinaejercicio_set', many=True, read_only=True)
+
     class Meta:
         model = Rutina
-        fields = '__all__'
+        fields = ['id_rutina', 'nombre', 'ejercicios']

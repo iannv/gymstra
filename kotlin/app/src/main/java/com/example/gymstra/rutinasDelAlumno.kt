@@ -123,7 +123,7 @@ class rutinasDelAlumno : AppCompatActivity() {
     private fun rutinaFiltrada(text: String?) {
         var nuevaListaFiltrada = mutableListOf<RutinaModel>()
         for (rutina in listaRutinas) {
-            if (rutina.nombre.lowercase().contains(text.toString().lowercase())) {
+            if (rutina.nombre.orEmpty().lowercase().contains(text.toString().lowercase())) {
                 nuevaListaFiltrada.add(rutina)
             }
         }
