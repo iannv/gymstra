@@ -4,5 +4,5 @@ data class RutinaEjercicioModel(
     var id_rutina_ejercicio: Int? = null,
     var ejercicio: EjercicioModel? = null,
     var series: Int = 0,
-    var repeticiones: MutableList<Int> = mutableListOf()
+    var repeticiones: List<Int>
 )
