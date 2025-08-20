@@ -10,7 +10,6 @@ router.register(r'asistencias', AsistenciaView, basename='asistencias')
 router.register(r'zona-muscular', ZonaMuscularView, basename='zona-muscular')
 router.register(r'ejercicios', EjercicioView, basename='ejercicios')
 router.register(r'rutinas', RutinaView, basename='rutinas')
-# router.register(r'repeticiones', RepeticionesView, basename='repeticiones')
 router.register(r'rutinas_ejercicios', RutinaEjercicioView, basename='rutinas_ejercicios')
 
 

@@ -14,7 +14,7 @@ import com.example.gymstra.models.RutinaModel
 class rutinaExpandableAdapter(
     private val rutinas: MutableList<RutinaModel>,
     private val listaEjercicios: List<EjercicioModel> // todos los ejercicios posibles
-) : RecyclerView.Adapter<RutinaExpandableAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<rutinaExpandableAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val expandirLista: ImageView = view.findViewById(R.id.expandirLista)
@@ -52,7 +52,7 @@ class rutinaExpandableAdapter(
                 series = 0,
                 repeticiones = mutableListOf()
             )
-            rutina.ejercicios.add(nuevoEjercicio)
+//            rutina.ejercicios.add(nuevoEjercicio)
             agregarEjercicioView(holder, rutina, nuevoEjercicio)
         }
     }

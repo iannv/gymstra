@@ -87,19 +87,14 @@ class rutinasDelAlumnoDetalle : AppCompatActivity() {
                 response: Response<List<RutinaModel>>
             ) {
                 if (response.isSuccessful) {
-                    val rutinas = response.body()?.map { rutina ->
-                        // Convertimos la lista de IDs a objetos RutinaEjercicioModel
-                        val ejerciciosModel = rutina.ejercicios.mapNotNull { idEj ->
-                            listaEjercicios.find { it.id_ejercicio == idEj }?.let {
-                                RutinaEjercicioModel(ejercicio = it)
-                            }
-                        }.toMutableList()
-                        rutina.copy(ejercicios = ejerciciosModel)
-                    }?.toMutableList() ?: mutableListOf()
+                    val rutinas = response.body() ?: emptyList()
 
                     recyclerRutinas.apply {
                         layoutManager = LinearLayoutManager(this@rutinasDelAlumnoDetalle)
-                        adapter = rutinaExpandableAdapter(rutinas, listaEjercicios)
+                        adapter = rutinaExpandableAdapter(
+                            rutinas.toMutableList(),
+                            listaEjercicios.toMutableList()
+                        )
                     }
 
                 } else {
